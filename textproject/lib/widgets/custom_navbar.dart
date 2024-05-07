@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
-class CustomNavbar extends StatelessWidget {
+class CustomNavbar extends StatefulWidget {
   final String mainTitle;
   const CustomNavbar({
     super.key,
@@ -9,13 +9,39 @@ class CustomNavbar extends StatelessWidget {
   });
 
   @override
+  State<CustomNavbar> createState() => _CustomNavbarState();
+}
+
+class _CustomNavbarState extends State<CustomNavbar> {
+  @override
   Widget build(BuildContext context) {
     return Container(
       height: kToolbarHeight,
       color: Colors.blue,
-      child: Center(
-        child: Text(mainTitle),
+      alignment: Alignment.center,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            widget.mainTitle,
+            style: _mainTitleStyle(),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              const Row(children: [Text("Exams"), Icon(Icons.arrow_drop_down)]),
+              TextButton(onPressed: () {}, child: const Text("Locations")),
+              TextButton(onPressed: () {}, child: const Text("Contact")),
+              TextButton(onPressed: () {}, child: const Text("About Us"))
+            ],
+          )
+        ],
       ),
     );
+  }
+
+  TextStyle _mainTitleStyle() {
+    return const TextStyle(
+        color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold);
   }
 }
