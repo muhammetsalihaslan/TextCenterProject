@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:textproject/widgets/hoverable.dart';
 
 class CustomNavbar extends StatefulWidget {
   final String mainTitle;
@@ -29,7 +30,10 @@ class _CustomNavbarState extends State<CustomNavbar> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              const Row(children: [Text("Exams"), Icon(Icons.arrow_drop_down)]),
+              const Row(children: [
+                HoverableContainer(child: child, tooltip: Text("Exam")),
+                Icon(Icons.arrow_drop_down)
+              ]),
               TextButton(onPressed: () {}, child: const Text("Locations")),
               TextButton(onPressed: () {}, child: const Text("Contact")),
               TextButton(onPressed: () {}, child: const Text("About Us"))
