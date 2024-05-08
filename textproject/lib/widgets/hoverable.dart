@@ -33,16 +33,3 @@ class _HoverableTextState extends State<HoverableText> {
     );
   }
 }
-
-class Exam extends StatelessWidget {
-  const Exam({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.green,
-      padding: const EdgeInsets.all(8),
-      child: const Text('Exam Content'),
-    );
-  }
-}
