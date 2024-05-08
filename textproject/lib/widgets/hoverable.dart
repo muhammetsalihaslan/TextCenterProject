@@ -15,26 +15,45 @@ class HoverableText extends StatefulWidget {
 }
 
 class _HoverableTextState extends State<HoverableText> {
-  OverlayEntry? overlayEntry;
+  final GlobalKey _hoverableKey = GlobalKey();
+  bool isHovered = false;
+  List<OverlayEntry> overlayEntries = [];
+
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
       onEnter: (_) {
-        overlayEntry = OverlayEntry(
+        final RenderBox renderBox =
+            _hoverableKey.currentContext!.findRenderObject() as RenderBox;
+        final Offset offset = renderBox.localToGlobal(Offset.zero);
+        final double top = offset.dy + renderBox.size.height + 10;
+        final double left = offset.dx;
+
+        OverlayEntry overlayEntry = OverlayEntry(
           builder: (context) => Positioned(
-            top: 50,
-            left: 50,
+            top: top,
+            left: left,
             child: Card(
               child: widget.hoverContent,
             ),
           ),
         );
-        Overlay.of(context).insert(overlayEntry!);
+        Overlay.of(context).insert(overlayEntry);
+        overlayEntries.add(overlayEntry);
+
+        setState(() => isHovered = true);
       },
       onExit: (_) {
-        overlayEntry?.remove();
+        for (var entry in overlayEntries) {
+          entry.remove();
+        }
+        overlayEntries.clear();
+        setState(() => isHovered = false);
       },
-      child: widget.child,
+      child: Container(
+        key: _hoverableKey,
+        child: widget.child,
+      ),
     );
   }
 }
