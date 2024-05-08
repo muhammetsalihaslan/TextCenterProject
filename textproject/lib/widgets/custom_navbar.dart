@@ -30,7 +30,7 @@ class _CustomNavbarState extends State<CustomNavbar> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              const HoverableText(hoverContent: Exam(), child: Text("Exams")),
+              const HoverableText(title: Text("Exams")),
               TextButton(onPressed: () {}, child: const Text("Locations")),
               TextButton(onPressed: () {}, child: const Text("Contact")),
               TextButton(onPressed: () {}, child: const Text("About Us"))
@@ -44,18 +44,5 @@ class _CustomNavbarState extends State<CustomNavbar> {
   TextStyle _mainTitleStyle() {
     return const TextStyle(
         color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold);
-  }
-}
-
-class Exam extends StatelessWidget {
-  const Exam({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.green,
-      padding: const EdgeInsets.all(8),
-      child: const Text('Exam Content'),
-    );
   }
 }

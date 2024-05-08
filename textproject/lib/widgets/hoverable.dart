@@ -2,12 +2,11 @@
 import 'package:flutter/material.dart';
 
 class HoverableText extends StatefulWidget {
-  final Widget child;
-  final Widget hoverContent;
+  final Widget title;
+
   const HoverableText({
     super.key,
-    required this.child,
-    required this.hoverContent,
+    required this.title,
   });
 
   @override
@@ -15,45 +14,35 @@ class HoverableText extends StatefulWidget {
 }
 
 class _HoverableTextState extends State<HoverableText> {
-  final GlobalKey _hoverableKey = GlobalKey();
   bool isHovered = false;
-  List<OverlayEntry> overlayEntries = [];
 
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
       onEnter: (_) {
-        final RenderBox renderBox =
-            _hoverableKey.currentContext!.findRenderObject() as RenderBox;
-        final Offset offset = renderBox.localToGlobal(Offset.zero);
-        final double top = offset.dy + renderBox.size.height + 10;
-        final double left = offset.dx;
-
-        OverlayEntry overlayEntry = OverlayEntry(
-          builder: (context) => Positioned(
-            top: top,
-            left: left,
-            child: Card(
-              child: widget.hoverContent,
-            ),
-          ),
-        );
-        Overlay.of(context).insert(overlayEntry);
-        overlayEntries.add(overlayEntry);
-
         setState(() => isHovered = true);
       },
       onExit: (_) {
-        for (var entry in overlayEntries) {
-          entry.remove();
-        }
-        overlayEntries.clear();
         setState(() => isHovered = false);
       },
-      child: Container(
-        key: _hoverableKey,
-        child: widget.child,
+      child: Stack(
+        children: [
+          widget.title,
+        ],
       ),
+    );
+  }
+}
+
+class Exam extends StatelessWidget {
+  const Exam({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.green,
+      padding: const EdgeInsets.all(8),
+      child: const Text('Exam Content'),
     );
   }
 }
