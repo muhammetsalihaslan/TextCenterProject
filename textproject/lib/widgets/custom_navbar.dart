@@ -17,8 +17,7 @@ class _CustomNavbarState extends State<CustomNavbar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: kToolbarHeight,
-      color: Colors.blue,
+      width: MediaQuery.of(context).size.width * (3 / 4),
       alignment: Alignment.center,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -43,6 +42,6 @@ class _CustomNavbarState extends State<CustomNavbar> {
 
   TextStyle _mainTitleStyle() {
     return const TextStyle(
-        color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold);
+        color: Colors.white, fontSize: 50, fontWeight: FontWeight.bold);
   }
 }

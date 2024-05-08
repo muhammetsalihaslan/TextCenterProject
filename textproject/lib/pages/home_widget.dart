@@ -8,7 +8,9 @@ class HomeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 100,
         title: const CustomNavbar(mainTitle: "TextCenter"),
+        centerTitle: true,
       ),
       body: const Center(
         child: Text("Body part "),
