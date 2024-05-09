@@ -29,7 +29,6 @@ class _CustomNavbarState extends State<CustomNavbar> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              const DropdownButtonExample(),
               TextButton(onPressed: () {}, child: const Text("Locations")),
               TextButton(onPressed: () {}, child: const Text("Contact")),
               TextButton(onPressed: () {}, child: const Text("About Us"))
