@@ -1,6 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:textproject/widgets/drop_down.dart';
 
 class CustomNavbar extends StatefulWidget {
   final String mainTitle;
@@ -29,9 +28,26 @@ class _CustomNavbarState extends State<CustomNavbar> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              TextButton(onPressed: () {}, child: const Text("Locations")),
-              TextButton(onPressed: () {}, child: const Text("Contact")),
-              TextButton(onPressed: () {}, child: const Text("About Us"))
+              Padding(
+                padding:
+                    const EdgeInsets.only(left: 10.0, right: 10.0, top: 10),
+                child: gestureButton("EXAMS"),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.only(left: 10.0, right: 10.0, top: 10),
+                child: gestureButton("LOCATIONS"),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.only(left: 10.0, right: 10.0, top: 10),
+                child: gestureButton("CONTACT"),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.only(left: 10.0, right: 10.0, top: 10),
+                child: gestureButton("ABOUT US"),
+              ),
             ],
           )
         ],
@@ -39,8 +55,24 @@ class _CustomNavbarState extends State<CustomNavbar> {
     );
   }
 
+  GestureDetector gestureButton(String title) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {});
+      },
+      child: Text(title, style: _mainButtonStyle()),
+    );
+  }
+
+  TextStyle _mainButtonStyle() {
+    return const TextStyle(
+        color: Color.fromARGB(255, 54, 51, 51),
+        fontSize: 15,
+        fontWeight: FontWeight.bold);
+  }
+
   TextStyle _mainTitleStyle() {
     return const TextStyle(
-        color: Colors.white, fontSize: 50, fontWeight: FontWeight.bold);
+        color: Colors.black, fontSize: 50, fontWeight: FontWeight.bold);
   }
 }
