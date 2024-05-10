@@ -7,12 +7,12 @@ class CustomNavbar extends StatefulWidget {
     super.key,
     required this.mainTitle,
   });
-
   @override
   State<CustomNavbar> createState() => _CustomNavbarState();
 }
 
 class _CustomNavbarState extends State<CustomNavbar> {
+  String isHovered = '';
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,26 +28,10 @@ class _CustomNavbarState extends State<CustomNavbar> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Padding(
-                padding:
-                    const EdgeInsets.only(left: 10.0, right: 10.0, top: 10),
-                child: gestureButton("EXAMS"),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.only(left: 10.0, right: 10.0, top: 10),
-                child: gestureButton("LOCATIONS"),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.only(left: 10.0, right: 10.0, top: 10),
-                child: gestureButton("CONTACT"),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.only(left: 10.0, right: 10.0, top: 10),
-                child: gestureButton("ABOUT US"),
-              ),
+              gestureButton("EXAMS"),
+              gestureButton("LOCATIONS"),
+              gestureButton("CONTACT"),
+              gestureButton("ABOUT US"),
             ],
           )
         ],
@@ -55,18 +39,34 @@ class _CustomNavbarState extends State<CustomNavbar> {
     );
   }
 
-  GestureDetector gestureButton(String title) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {});
+  Widget gestureButton(String title) {
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      onEnter: (_) {
+        setState(() {
+          isHovered = title;
+        });
       },
-      child: Text(title, style: _mainButtonStyle()),
+      onExit: (_) {
+        setState(() {
+          isHovered = "";
+        });
+      },
+      child: GestureDetector(
+        onTap: () {
+          setState(() {});
+        },
+        child: Padding(
+          padding: const EdgeInsets.only(left: 10.0, right: 10.0, top: 10),
+          child: Text(title, style: _mainButtonStyle(title == isHovered)),
+        ),
+      ),
     );
   }
 
-  TextStyle _mainButtonStyle() {
-    return const TextStyle(
-        color: Color.fromARGB(255, 54, 51, 51),
+  TextStyle _mainButtonStyle(bool isHovered) {
+    return TextStyle(
+        color: isHovered ? Colors.blue : const Color.fromARGB(255, 54, 51, 51),
         fontSize: 15,
         fontWeight: FontWeight.bold);
   }
