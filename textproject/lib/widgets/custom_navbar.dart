@@ -15,28 +15,36 @@ class _CustomNavbarState extends State<CustomNavbar> {
   String isHovered = '';
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width * (3 / 4),
-      alignment: Alignment.center,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            widget.mainTitle,
-            style: _mainTitleStyle(),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              gestureButton("EXAMS"),
-              gestureButton("LOCATIONS"),
-              gestureButton("CONTACT"),
-              gestureButton("ABOUT US"),
-            ],
-          )
-        ],
-      ),
-    );
+    return LayoutBuilder(builder: (context, constraints) {
+      double navbarWidth;
+      if (constraints.maxWidth >= 800) {
+        navbarWidth = MediaQuery.of(context).size.width * (3 / 4);
+      } else {
+        navbarWidth = MediaQuery.of(context).size.width;
+      }
+      return Container(
+        width: navbarWidth,
+        alignment: Alignment.center,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              widget.mainTitle,
+              style: _mainTitleStyle(),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                gestureButton("EXAMS"),
+                gestureButton("LOCATIONS"),
+                gestureButton("CONTACT"),
+                gestureButton("ABOUT US"),
+              ],
+            )
+          ],
+        ),
+      );
+    });
   }
 
   Widget gestureButton(String title) {
