@@ -17,18 +17,13 @@ class _CustomNavbarState extends State<CustomNavbar> {
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
       double navbarWidth;
-      bool navbarDrawer;
 
       if (constraints.maxWidth >= 800) {
         navbarWidth = MediaQuery.of(context).size.width * (3 / 4);
+      } else if (constraints.maxWidth <= 650) {
+        navbarWidth = MediaQuery.of(context).size.width * 0;
       } else {
         navbarWidth = MediaQuery.of(context).size.width;
-      }
-
-      if (constraints.maxWidth <= 650) {
-        navbarDrawer = true;
-      } else {
-        navbarDrawer = false;
       }
 
       return Container(
