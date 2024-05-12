@@ -23,7 +23,7 @@ class _CustomNavbarState extends State<CustomNavbar> {
         navbarWidth = MediaQuery.of(context).size.width * (3 / 4);
         drawerIcon = false;
       } else if (constraints.maxWidth <= 650) {
-        navbarWidth = MediaQuery.of(context).size.width * 0;
+        navbarWidth = MediaQuery.of(context).size.width;
         drawerIcon = true;
       } else {
         navbarWidth = MediaQuery.of(context).size.width;
@@ -40,15 +40,23 @@ class _CustomNavbarState extends State<CustomNavbar> {
               widget.mainTitle,
               style: _mainTitleStyle(),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                gestureButton("EXAMS"),
-                gestureButton("LOCATIONS"),
-                gestureButton("CONTACT"),
-                gestureButton("ABOUT US"),
-              ],
-            )
+            if (drawerIcon)
+              IconButton(
+                icon: const Icon(Icons.menu),
+                onPressed: () {
+                  // Burada drawer'ı açma işlemleri gerçekleştirilebilir
+                },
+              )
+            else
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  gestureButton("EXAMS"),
+                  gestureButton("LOCATIONS"),
+                  gestureButton("CONTACT"),
+                  gestureButton("ABOUT US"),
+                ],
+              )
           ],
         ),
       );
