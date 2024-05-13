@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:textproject/widgets/drawerPage.dart';
 
 class CustomNavbar extends StatefulWidget {
   final String mainTitle;
@@ -41,12 +42,7 @@ class _CustomNavbarState extends State<CustomNavbar> {
               style: _mainTitleStyle(),
             ),
             if (drawerIcon)
-              IconButton(
-                icon: const Icon(Icons.menu),
-                onPressed: () {
-                  // Burada drawer'ı açma işlemleri gerçekleştirilebilir
-                },
-              )
+              ()
             else
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
