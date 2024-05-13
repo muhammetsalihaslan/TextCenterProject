@@ -2,10 +2,8 @@
 import 'package:flutter/material.dart';
 
 class CustomNavbar extends StatefulWidget {
-  final String mainTitle;
   const CustomNavbar({
     super.key,
-    required this.mainTitle,
   });
   @override
   State<CustomNavbar> createState() => _CustomNavbarState();
@@ -36,9 +34,13 @@ class _CustomNavbarState extends State<CustomNavbar> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              widget.mainTitle,
-              style: _mainTitleStyle(),
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Image.asset(
+                'assets/logo/secondsmallerlogo.png',
+                width: 300,
+                height: 200,
+              ),
             ),
             if (drawerIcon)
               (const Row())
@@ -88,10 +90,5 @@ class _CustomNavbarState extends State<CustomNavbar> {
         color: isHovered ? Colors.blue : const Color.fromARGB(255, 54, 51, 51),
         fontSize: 15,
         fontWeight: FontWeight.bold);
-  }
-
-  TextStyle _mainTitleStyle() {
-    return const TextStyle(
-        color: Colors.black, fontSize: 50, fontWeight: FontWeight.bold);
   }
 }
