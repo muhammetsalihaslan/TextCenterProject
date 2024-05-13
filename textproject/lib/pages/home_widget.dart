@@ -34,24 +34,14 @@ class _HomeWidgetState extends State<HomeWidget> {
               child: ListView(
                 padding: EdgeInsets.zero,
                 children: [
-                  const DrawerHeader(
-                    decoration: BoxDecoration(
-                      color: Colors.blue,
-                    ),
-                    child: Text(
-                      'Drawer Header',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                      ),
-                    ),
-                  ),
+                  DrawerHeader(
+                      child: Image.asset(
+                    'assets/logo/smallerlogo.png',
+                    width: 200,
+                    height: 200,
+                  )),
                   ListTile(
-                    title: const Text('Ana Sayfa'),
-                    onTap: () {},
-                  ),
-                  ListTile(
-                    title: const Text('Exams'),
+                    title: const Text('EXAMS'),
                     onTap: () {
                       Navigator.pop(context); // Drawer'ı kapatır
                       // Exams sayfasına gitmek için Navigator kullanabilirsiniz

@@ -42,7 +42,7 @@ class _CustomNavbarState extends State<CustomNavbar> {
               style: _mainTitleStyle(),
             ),
             if (drawerIcon)
-              ()
+              (const Row())
             else
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
