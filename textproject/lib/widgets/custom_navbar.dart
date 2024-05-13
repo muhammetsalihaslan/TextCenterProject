@@ -1,6 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:textproject/widgets/drawerPage.dart';
 
 class CustomNavbar extends StatefulWidget {
   final String mainTitle;
@@ -23,7 +22,7 @@ class _CustomNavbarState extends State<CustomNavbar> {
       if (constraints.maxWidth >= 800) {
         navbarWidth = MediaQuery.of(context).size.width * (3 / 4);
         drawerIcon = false;
-      } else if (constraints.maxWidth <= 650) {
+      } else if (constraints.maxWidth <= 600) {
         navbarWidth = MediaQuery.of(context).size.width;
         drawerIcon = true;
       } else {

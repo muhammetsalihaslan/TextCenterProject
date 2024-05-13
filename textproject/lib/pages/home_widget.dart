@@ -19,7 +19,7 @@ class _HomeWidgetState extends State<HomeWidget> {
       builder: (BuildContext context, BoxConstraints constraints) {
         Widget bodyContent;
 
-        if (screenWidth < 600) {
+        if (screenWidth <= 650) {
           // Ekran genişliği 600 pikselden küçükse Drawer'ı göster
           bodyContent = Scaffold(
             appBar: AppBar(
