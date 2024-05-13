@@ -28,7 +28,7 @@ class _HomeWidgetState extends State<HomeWidget> {
               title: const CustomNavbar(),
               centerTitle: true,
             ),
-            body: const HomeBody(),
+            body: const Center(child: HomeBody()),
             endDrawer: Drawer(
               child: ListView(
                 padding: EdgeInsets.zero,

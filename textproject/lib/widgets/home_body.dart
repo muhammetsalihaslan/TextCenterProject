@@ -10,28 +10,24 @@ class HomeBody extends StatefulWidget {
 
 class _HomeBodyState extends State<HomeBody> {
   final List<String> imagePaths = [
-    "assets/bodyimg/humanhand.webp",
-    "assets/bodyimg/Prüfung.jpg"
+    "assets/bodyimg/prufung.jpg",
+    "assets/bodyimg/humanhand.webp"
   ];
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: imagePaths.length,
-          itemBuilder: (BuildContext context, int index) {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Image.asset(
-                imagePaths[index],
-                width: 200,
-                height: 200,
-                fit: BoxFit.cover, // Görüntüyü container'a sığdırmak için
-              ),
-            );
-          },
-        )
+        SizedBox(
+            height: 300,
+            child: PageView.builder(
+              itemCount: imagePaths.length,
+              itemBuilder: (context, index) {
+                return Image.asset(
+                  imagePaths[index],
+                  fit: BoxFit.cover,
+                );
+              },
+            )),
       ],
     );
   }
