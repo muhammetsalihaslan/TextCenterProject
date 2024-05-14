@@ -52,10 +52,11 @@ class _HomeBodyState extends State<HomeBody> {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
     return Column(
       children: [
         SizedBox(
-          height: 385,
+          height: screenHeight * 0.4,
           child: PageView.builder(
             controller: _controller,
             itemCount: imagePaths.length,
