@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -12,8 +13,8 @@ class HomeBody extends StatefulWidget {
 
 class _HomeBodyState extends State<HomeBody> {
   final List<String> imagePaths = [
-    "assets/bodyimg/humanhand.webp",
-    "assets/bodyimg/prufung.jpg"
+    "assets/bodyimg/prufung.jpg",
+    "assets/bodyimg/humanhand.webp"
   ];
 
   late final PageController _controller;
@@ -27,15 +28,17 @@ class _HomeBodyState extends State<HomeBody> {
       if (_controller.page != null &&
           _controller.page! < imagePaths.length - 1) {
         _controller.nextPage(
-          duration: const Duration(seconds: 5),
+          duration: const Duration(seconds: 3),
           curve: Curves.easeInOut,
         );
       } else {
-        _controller.animateToPage(
-          0,
-          duration: const Duration(seconds: 5),
-          curve: Curves.easeInOut,
-        );
+        Future.delayed(const Duration(seconds: 5), () {
+          _controller.animateToPage(
+            0,
+            duration: const Duration(seconds: 3),
+            curve: Curves.easeInOut,
+          );
+        });
       }
     });
   }
@@ -52,17 +55,18 @@ class _HomeBodyState extends State<HomeBody> {
     return Column(
       children: [
         SizedBox(
-            height: 385,
-            child: PageView.builder(
-              controller: _controller,
-              itemCount: imagePaths.length,
-              itemBuilder: (context, index) {
-                return Image.asset(
-                  imagePaths[index],
-                  fit: BoxFit.fill,
-                );
-              },
-            )),
+          height: 385,
+          child: PageView.builder(
+            controller: _controller,
+            itemCount: imagePaths.length,
+            itemBuilder: (context, index) {
+              return Image.asset(
+                imagePaths[index],
+                fit: BoxFit.cover,
+              );
+            },
+          ),
+        ),
       ],
     );
   }
