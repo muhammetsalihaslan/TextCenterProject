@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:textproject/widgets/custom_navbar.dart';
 import 'package:textproject/widgets/home_body.dart';
+import 'package:textproject/widgets/home_body_search.dart';
 
 class HomeWidget extends StatefulWidget {
   const HomeWidget({super.key});
@@ -28,7 +29,7 @@ class _HomeWidgetState extends State<HomeWidget> {
               title: const CustomNavbar(),
               centerTitle: true,
             ),
-            body: const Center(child: HomeBody()),
+            body: const Column(children: [HomeBody(), HomeBodySearch()]),
             endDrawer: Drawer(
               child: ListView(
                 padding: EdgeInsets.zero,
@@ -79,7 +80,7 @@ class _HomeWidgetState extends State<HomeWidget> {
               title: const CustomNavbar(),
               centerTitle: true,
             ),
-            body: const Center(child: HomeBody()),
+            body: const Column(children: [HomeBody(), HomeBodySearch()]),
           );
         }
 
