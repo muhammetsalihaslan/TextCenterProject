@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:textproject/widgets/exam_dropdown.dart';
 
 class HomeBodySearch extends StatefulWidget {
   const HomeBodySearch({super.key});
@@ -14,7 +15,7 @@ class _HomeBodySearchState extends State<HomeBodySearch> {
       bool containerWidth;
       double containerBigWidth = MediaQuery.of(context).size.width;
 
-      if (constraints.maxWidth >= 800) {
+      if (constraints.maxWidth >= 650) {
         containerWidth = true;
       } else {
         containerWidth = false;
@@ -33,7 +34,7 @@ class _HomeBodySearchState extends State<HomeBodySearch> {
                     Text("Suchfilter"),
                   ],
                 ),
-              const Row(),
+              const Row(children: [ExamDropDown()]),
             ],
           ));
     });
