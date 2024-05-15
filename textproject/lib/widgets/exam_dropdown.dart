@@ -1,4 +1,3 @@
-import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 
 class ExamDropDown extends StatefulWidget {
@@ -29,22 +28,6 @@ class _ExamDropDownState extends State<ExamDropDown> {
   ];
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        DropdownSearch<String>(
-          items: examTypes,
-          dropdownDecoratorProps: const DropDownDecoratorProps(
-            dropdownSearchDecoration: InputDecoration(
-                labelText: "Select Exam Type", hintText: "Choose an exam type"),
-          ),
-          onChanged: (value) {
-            setState(() {
-              selectedExamType = value;
-            });
-          },
-        ),
-        const SizedBox(height: 20),
-      ],
-    );
+    return const Column();
   }
 }

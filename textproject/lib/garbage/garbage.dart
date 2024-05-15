@@ -1,122 +1,204 @@
-// // ignore_for_file: public_member_api_docs, sort_constructors_first
-// import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
-// class HoverableText extends StatefulWidget {
-//   final Widget child;
-//   final Widget hoverContent;
-//   const HoverableText({
-//     super.key,
-//     required this.child,
-//     required this.hoverContent,
-//   });
+// Flutter code sample for [DropdownMenu]s. The first dropdown menu
+// has the default outlined border and demos using the
+// [DropdownMenuEntry] style parameter to customize its appearance.
+// The second dropdown menu customizes the appearance of the dropdown
+// menu's text field with its [InputDecorationTheme] parameter.
 
-//   @override
-//   State<HoverableText> createState() => _HoverableTextState();
-// }
+void main() {
+  runApp(const DropdownMenuExample());
+}
 
-// class _HoverableTextState extends State<HoverableText> {
-//   final GlobalKey _hoverableKey = GlobalKey();
-//   bool isHovered = false;
-//   List<OverlayEntry> overlayEntries = [];
+// DropdownMenuEntry labels and values for the first dropdown menu.
+enum ColorLabel {
+  blue('Blue', Colors.blue),
+  pink('Pink', Colors.pink),
+  green('Green', Colors.green),
+  yellow('Orange', Colors.orange),
+  grey('Grey', Colors.grey);
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return MouseRegion(
-//       onEnter: (_) {
-//         final RenderBox renderBox =
-//             _hoverableKey.currentContext!.findRenderObject() as RenderBox;
-//         final Offset offset = renderBox.localToGlobal(Offset.zero);
-//         final double top = offset.dy + renderBox.size.height + 0;
-//         final double left = offset.dx;
+  const ColorLabel(this.label, this.color);
+  final String label;
+  final Color color;
+}
 
-//         OverlayEntry overlayEntry = OverlayEntry(
-//           builder: (context) => Positioned(
-//             top: top,
-//             left: left,
-//             child: Card(child: widget.hoverContent),
-//           ),
-//         );
-//         Overlay.of(context).insert(overlayEntry);
-//         overlayEntries.add(overlayEntry);
+// DropdownMenuEntry labels and values for the second dropdown menu.
+enum IconLabel {
+  smile('Smile', Icons.sentiment_satisfied_outlined),
+  cloud(
+    'Cloud',
+    Icons.cloud_outlined,
+  ),
+  brush('Brush', Icons.brush_outlined),
+  heart('Heart', Icons.favorite);
 
-//         setState(() => isHovered = true);
-//       },
-//       onExit: (_) {
-//         for (var entry in overlayEntries) {
-//           entry.remove();
-//         }
-//         overlayEntries.clear();
-//         setState(() => isHovered = false);
-//       },
-//       child: Container(
-//         key: _hoverableKey,
-//         child: widget.child,
-//       ),
-//     );
-//   }
-// }
+  const IconLabel(this.label, this.icon);
+  final String label;
+  final IconData icon;
+}
+
+class DropdownMenuExample extends StatefulWidget {
+  const DropdownMenuExample({super.key});
+
+  @override
+  State<DropdownMenuExample> createState() => _DropdownMenuExampleState();
+}
+
+class _DropdownMenuExampleState extends State<DropdownMenuExample> {
+  final TextEditingController colorController = TextEditingController();
+  final TextEditingController iconController = TextEditingController();
+  ColorLabel? selectedColor;
+  IconLabel? selectedIcon;
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(
+        useMaterial3: true,
+        colorSchemeSeed: Colors.green,
+      ),
+      home: Scaffold(
+        body: SafeArea(
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    DropdownMenu<ColorLabel>(
+                      initialSelection: ColorLabel.green,
+                      controller: colorController,
+                      // requestFocusOnTap is enabled/disabled by platforms when it is null.
+                      // On mobile platforms, this is false by default. Setting this to true will
+                      // trigger focus request on the text field and virtual keyboard will appear
+                      // afterward. On desktop platforms however, this defaults to true.
+                      requestFocusOnTap: true,
+                      label: const Text('Color'),
+                      onSelected: (ColorLabel? color) {
+                        setState(() {
+                          selectedColor = color;
+                        });
+                      },
+                      dropdownMenuEntries: ColorLabel.values
+                          .map<DropdownMenuEntry<ColorLabel>>(
+                              (ColorLabel color) {
+                        return DropdownMenuEntry<ColorLabel>(
+                          value: color,
+                          label: color.label,
+                          enabled: color.label != 'Grey',
+                          style: MenuItemButton.styleFrom(
+                            foregroundColor: color.color,
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                    const SizedBox(width: 24),
+                    DropdownMenu<IconLabel>(
+                      controller: iconController,
+                      enableFilter: true,
+                      requestFocusOnTap: true,
+                      leadingIcon: const Icon(Icons.search),
+                      label: const Text('Icon'),
+                      inputDecorationTheme: const InputDecorationTheme(
+                        filled: true,
+                        contentPadding: EdgeInsets.symmetric(vertical: 5.0),
+                      ),
+                      onSelected: (IconLabel? icon) {
+                        setState(() {
+                          selectedIcon = icon;
+                        });
+                      },
+                      dropdownMenuEntries:
+                          IconLabel.values.map<DropdownMenuEntry<IconLabel>>(
+                        (IconLabel icon) {
+                          return DropdownMenuEntry<IconLabel>(
+                            value: icon,
+                            label: icon.label,
+                            leadingIcon: Icon(icon.icon),
+                          );
+                        },
+                      ).toList(),
+                    ),
+                  ],
+                ),
+              ),
+              if (selectedColor != null && selectedIcon != null)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                        'You selected a ${selectedColor?.label} ${selectedIcon?.label}'),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      child: Icon(
+                        selectedIcon?.icon,
+                        color: selectedColor?.color,
+                      ),
+                    )
+                  ],
+                )
+              else
+                const Text('Please select a color and an icon.')
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
 
 
-// //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+///!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
-// import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
-// /// Flutter code sample for [DropdownButton].
+void main() => runApp(MyApp());
 
-// const List<String> list = <String>['One', 'Two', 'Three', 'Four'];
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Simple Dropdown Menu Example'),
+        ),
+        body: MyHomePage(),
+      ),
+    );
+  }
+}
 
-// void main() => runApp(const DropdownButtonApp());
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
 
-// class DropdownButtonApp extends StatelessWidget {
-//   const DropdownButtonApp({super.key});
+class _MyHomePageState extends State<MyHomePage> {
+  String? _selectedItem;
+  final List<String> _dropdownItems = ['Option 1', 'Option 2', 'Option 3'];
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       home: Scaffold(
-//         appBar: AppBar(title: const Text('DropdownButton Sample')),
-//         body: const Center(
-//           child: DropdownButtonExample(),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// class DropdownButtonExample extends StatefulWidget {
-//   const DropdownButtonExample({super.key});
-
-//   @override
-//   State<DropdownButtonExample> createState() => _DropdownButtonExampleState();
-// }
-
-// class _DropdownButtonExampleState extends State<DropdownButtonExample> {
-//   String dropdownValue = list.first;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return DropdownButton<String>(
-//       value: dropdownValue,
-//       icon: const Icon(Icons.arrow_downward),
-//       elevation: 16,
-//       style: const TextStyle(color: Colors.deepPurple),
-//       underline: Container(
-//         height: 2,
-//         color: Colors.deepPurpleAccent,
-//       ),
-//       onChanged: (String? value) {
-//         // This is called when the user selects an item.
-//         setState(() {
-//           dropdownValue = value!;
-//         });
-//       },
-//       items: list.map<DropdownMenuItem<String>>((String value) {
-//         return DropdownMenuItem<String>(
-//           value: value,
-//           child: Text(value),
-//         );
-//       }).toList(),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: DropdownButton<String>(
+        hint: Text('Select an option'),
+        value: _selectedItem,
+        onChanged: (String? newValue) {
+          setState(() {
+            _selectedItem = newValue;
+          });
+        },
+        items: _dropdownItems.map<DropdownMenuItem<String>>((String value) {
+          return DropdownMenuItem<String>(
+            value: value,
+            child: Text(value),
+          );
+        }).toList(),
+      ),
+    );
+  }
+}

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:textproject/widgets/exam_dropdown.dart';
 
 class HomeBodySearch extends StatefulWidget {
   const HomeBodySearch({super.key});
@@ -34,7 +33,14 @@ class _HomeBodySearchState extends State<HomeBodySearch> {
                     Text("Suchfilter"),
                   ],
                 ),
-              const Row(children: [ExamDropDown()]),
+              const Text(
+                  "Please use the search function to find courses quick and easy"),
+              const Column(
+                children: [
+                  Text("Exams"),
+                  Row(children: []),
+                ],
+              ),
             ],
           ));
     });
