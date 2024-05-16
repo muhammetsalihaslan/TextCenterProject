@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:textproject/widgets/custom_dropdown.dart';
 import 'package:textproject/widgets/custom_navbar.dart';
 import 'package:textproject/widgets/home_body.dart';
 import 'package:textproject/widgets/home_body_search.dart';
@@ -29,7 +30,7 @@ class _HomeWidgetState extends State<HomeWidget> {
               title: const CustomNavbar(),
               centerTitle: true,
             ),
-            body: const Column(children: [HomeBody(), HomeBodySearch()]),
+            body: Column(children: [const HomeBody(), KursFinder()]),
             endDrawer: Drawer(
               child: ListView(
                 padding: EdgeInsets.zero,
@@ -80,7 +81,7 @@ class _HomeWidgetState extends State<HomeWidget> {
               title: const CustomNavbar(),
               centerTitle: true,
             ),
-            body: const Column(children: [HomeBody(), HomeBodySearch()]),
+            body: Column(children: [const HomeBody(), KursFinder()]),
           );
         }
 
