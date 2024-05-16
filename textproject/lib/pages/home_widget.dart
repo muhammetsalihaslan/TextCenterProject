@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:textproject/widgets/custom_dropdown.dart';
 import 'package:textproject/widgets/custom_navbar.dart';
 import 'package:textproject/widgets/home_body.dart';
-import 'package:textproject/widgets/home_body_search.dart';
 
 class HomeWidget extends StatefulWidget {
   const HomeWidget({super.key});
