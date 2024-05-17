@@ -64,7 +64,8 @@ class HomePage extends StatelessWidget {
           onPressed: () {},
           child: Text(
             title,
-            style: const TextStyle(color: Colors.black, fontSize: 16),
+            style: const TextStyle(
+                color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
           )),
     );
   }
