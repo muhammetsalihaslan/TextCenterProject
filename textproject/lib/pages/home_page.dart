@@ -7,7 +7,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(100.0),
+        preferredSize: const Size.fromHeight(120.0),
         child: LayoutBuilder(
           builder: (context, constraints) {
             double screenWidth = constraints.maxWidth;
@@ -18,7 +18,12 @@ class HomePage extends StatelessWidget {
                     ? screenWidth
                     : appBarWidth,
                 child: AppBar(
-                  title: Image.asset('assts/logo/secondsmallerlogo.png'),
+                  title: Image.asset(
+                    'assets/logo/secondsmallerlogo.png',
+                    width: 250,
+                    height: 75,
+                    fit: BoxFit.contain,
+                  ),
                   actions: MediaQuery.of(context).size.width > 670
                       ? [
                           _buildNavBarItem("Exam", context),
