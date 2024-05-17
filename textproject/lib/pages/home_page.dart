@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:textproject/widgets/slider_part.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -53,7 +54,7 @@ class HomePage extends StatelessWidget {
       endDrawer: MediaQuery.of(context).size.width <= 670
           ? _buildDrawer(context)
           : null,
-      body: const Center(child: Text('Content goes here')),
+      body: const CustomSlider(),
     );
   }
 
