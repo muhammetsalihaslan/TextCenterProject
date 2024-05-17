@@ -17,21 +17,24 @@ class HomePage extends StatelessWidget {
                 width: MediaQuery.of(context).size.width < 850
                     ? screenWidth
                     : appBarWidth,
-                child: AppBar(
-                  title: Image.asset(
-                    'assets/logo/secondsmallerlogo.png',
-                    width: 250,
-                    height: 75,
-                    fit: BoxFit.contain,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 20.0),
+                  child: AppBar(
+                    title: Image.asset(
+                      'assets/logo/secondsmallerlogo.png',
+                      width: 250,
+                      height: 100,
+                      fit: BoxFit.contain,
+                    ),
+                    actions: MediaQuery.of(context).size.width > 670
+                        ? [
+                            _buildNavBarItem("Exams", context),
+                            _buildNavBarItem('Kurse', context),
+                            _buildNavBarItem('Prüfungen', context),
+                            _buildNavBarItem('Kontakt', context),
+                          ]
+                        : null,
                   ),
-                  actions: MediaQuery.of(context).size.width > 670
-                      ? [
-                          _buildNavBarItem("Exam", context),
-                          _buildNavBarItem('Kurse', context),
-                          _buildNavBarItem('Prüfungen', context),
-                          _buildNavBarItem('Kontakt', context),
-                        ]
-                      : null,
                 ),
               ),
             );
@@ -60,16 +63,19 @@ class HomePage extends StatelessWidget {
   Widget _buildDrawer(BuildContext context) {
     return Drawer(
         child: ListView(padding: EdgeInsets.zero, children: [
-      const DrawerHeader(
-          decoration: BoxDecoration(color: Colors.blue),
-          child: Text(
-            'Pruefungscenter',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 24,
-            ),
-          )),
-      _buildDrawerItem('Home', context),
+      SizedBox(
+        height: 100,
+        child: DrawerHeader(
+          decoration: const BoxDecoration(color: Colors.transparent),
+          child: Image.asset(
+            'assets/logo/secondsmallerlogo.png',
+            width: 250,
+            height: 100,
+            fit: BoxFit.contain,
+          ),
+        ),
+      ),
+      _buildDrawerItem('Exams', context),
       _buildDrawerItem('Kurse', context),
       _buildDrawerItem('Prüfungen', context),
       _buildDrawerItem('Kontakt', context),
