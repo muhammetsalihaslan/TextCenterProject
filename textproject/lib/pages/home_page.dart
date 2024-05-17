@@ -20,11 +20,20 @@ class HomePage extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(top: 20.0),
                   child: AppBar(
-                    title: Image.asset(
-                      'assets/logo/secondsmallerlogo.png',
-                      width: 250,
-                      height: 100,
-                      fit: BoxFit.contain,
+                    title: GestureDetector(
+                      onTap: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const HomePage()),
+                        );
+                      },
+                      child: Image.asset(
+                        'assets/logo/secondsmallerlogo.png',
+                        width: 250,
+                        height: 100,
+                        fit: BoxFit.contain,
+                      ),
                     ),
                     actions: MediaQuery.of(context).size.width > 670
                         ? [
@@ -67,11 +76,19 @@ class HomePage extends StatelessWidget {
         height: 100,
         child: DrawerHeader(
           decoration: const BoxDecoration(color: Colors.transparent),
-          child: Image.asset(
-            'assets/logo/secondsmallerlogo.png',
-            width: 250,
-            height: 100,
-            fit: BoxFit.contain,
+          child: GestureDetector(
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const HomePage()),
+              );
+            },
+            child: Image.asset(
+              'assets/logo/secondsmallerlogo.png',
+              width: 250,
+              height: 100,
+              fit: BoxFit.contain,
+            ),
           ),
         ),
       ),
