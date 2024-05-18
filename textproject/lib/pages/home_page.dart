@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:textproject/widgets/slider_part.dart';
+import 'package:textproject/widgets/image_silder.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -54,7 +54,11 @@ class HomePage extends StatelessWidget {
       endDrawer: MediaQuery.of(context).size.width <= 670
           ? _buildDrawer(context)
           : null,
-      body: const CustomSlider(),
+      body: const Column(
+        children: [
+          Expanded(child: ImageSlider()),
+        ],
+      ),
     );
   }
 
