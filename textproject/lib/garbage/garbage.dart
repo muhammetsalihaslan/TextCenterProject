@@ -1,60 +1,107 @@
-// class ImageSlider extends StatefulWidget {
-//   @override
-//   _ImageSliderState createState() => _ImageSliderState();
-// }
+// import 'package:flutter/material.dart';
 
-// class _ImageSliderState extends State<ImageSlider> {
-//   final PageController _pageController = PageController(initialPage: 0);
-//   final List<String> _imageList = [
-//     'assets/images/image1.jpg',
-//     'assets/images/image2.jpg',
-//     'assets/images/image3.jpg',
-//   ];
-//   int _currentPage = 0;
-//   Timer _timer;
-
-//   @override
-//   void initState() {
-//     super.initState();
-//     _timer = Timer.periodic(Duration(seconds: 3), (Timer timer) {
-//       if (_currentPage < _imageList.length - 1) {
-//         setState(() {
-//           _currentPage++;
-//         });
-//       } else {
-//         setState(() {
-//           _currentPage = 0;
-//         });
-//       }
-//       _pageController.animateToPage(
-//         _currentPage,
-//         duration: Duration(milliseconds: 300),
-//         curve: Curves.easeIn,
-//       );
-//     });
-//   }
-
-//   @override
-//   void dispose() {
-//     _timer?.cancel();
-//     _pageController.dispose();
-//     super.dispose();
-//   }
-
+// class SearchFilter extends StatelessWidget {
 //   @override
 //   Widget build(BuildContext context) {
-//     return Container(
-//       height: 400.0,
-//       child: PageView.builder(
-//         controller: _pageController,
-//         itemCount: _imageList.length,
-//         itemBuilder: (context, index) {
-//           return Image.asset(
-//             _imageList[index],
-//             fit: BoxFit.cover,
-//           );
-//         },
+//     double screenWidth = MediaQuery.of(context).size.width;
+//     double containerWidth =
+//         screenWidth > 800 ? screenWidth * 3 / 4 : screenWidth;
+
+//     return Center(
+//       child: Container(
+//         width: containerWidth,
+//         color: Colors.lightBlueAccent,
+//         padding: const EdgeInsets.all(16.0),
+//         child: Column(
+//           crossAxisAlignment: CrossAxisAlignment.start,
+//           children: [
+//             Row(
+//               children: [
+//                 Icon(Icons.search, color: Colors.blue),
+//                 SizedBox(width: 8),
+//                 Text(
+//                   'Suchfilter',
+//                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+//                 ),
+//               ],
+//             ),
+//             SizedBox(height: 8),
+//             Text(
+//               'Nutzen Sie die Suchfilter, um bestimmte Kurse schneller und einfacher zu finden.',
+//             ),
+//             SizedBox(height: 16),
+//             screenWidth > 800
+//                 ? Row(
+//                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                     children: [
+//                       Expanded(child: _buildTextField('Kurstitle')),
+//                       SizedBox(width: 16),
+//                       Expanded(child: _buildDropdown('Kategorie')),
+//                     ],
+//                   )
+//                 : Column(
+//                     children: [
+//                       _buildTextField('Kurstitle'),
+//                       SizedBox(height: 16),
+//                       _buildDropdown('Kategorie'),
+//                     ],
+//                   ),
+//             SizedBox(height: 16),
+//             screenWidth > 800
+//                 ? Row(
+//                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                     children: [
+//                       Expanded(child: _buildDropdown('Kursort')),
+//                       SizedBox(width: 16),
+//                       Expanded(child: _buildDropdown('Sprachniveau')),
+//                     ],
+//                   )
+//                 : Column(
+//                     children: [
+//                       _buildDropdown('Kursort'),
+//                       SizedBox(height: 16),
+//                       _buildDropdown('Sprachniveau'),
+//                     ],
+//                   ),
+//             SizedBox(height: 16),
+//             Align(
+//               alignment: Alignment.centerRight,
+//               child: ElevatedButton(
+//                 onPressed: () {},
+//                 child: Text('Kurse finden'),
+//                 style: ElevatedButton.styleFrom(
+//                   primary: Colors.blue,
+//                 ),
+//               ),
+//             ),
+//           ],
+//         ),
 //       ),
+//     );
+//   }
+
+//   Widget _buildTextField(String label) {
+//     return TextField(
+//       decoration: InputDecoration(
+//         labelText: label,
+//         border: OutlineInputBorder(),
+//       ),
+//     );
+//   }
+
+//   Widget _buildDropdown(String label) {
+//     return DropdownButtonFormField<String>(
+//       decoration: InputDecoration(
+//         labelText: label,
+//         border: OutlineInputBorder(),
+//       ),
+//       items: ['--'].map((String value) {
+//         return DropdownMenuItem<String>(
+//           value: value,
+//           child: Text(value),
+//         );
+//       }).toList(),
+//       onChanged: (value) {},
 //     );
 //   }
 // }

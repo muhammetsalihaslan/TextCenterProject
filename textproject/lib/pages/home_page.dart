@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:textproject/widgets/image_silder.dart';
+import 'package:textproject/widgets/search_filter.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -57,6 +58,8 @@ class HomePage extends StatelessWidget {
       body: const Column(
         children: [
           Expanded(child: ImageSlider()),
+          SizedBox(height: 15),
+          SearchFilter()
         ],
       ),
     );
