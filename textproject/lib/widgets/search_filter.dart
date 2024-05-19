@@ -18,10 +18,10 @@ class _SearchFilterState extends State<SearchFilter> {
       width: containerWidth,
       color: Colors.lightBlueAccent,
       padding: const EdgeInsets.all(20),
-      child: const Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
+          const Row(
             children: [
               Icon(Icons.search, color: Colors.blue),
               SizedBox(width: 8),
@@ -29,13 +29,53 @@ class _SearchFilterState extends State<SearchFilter> {
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             ],
           ),
-          SizedBox(height: 8),
-          Text(
+          const SizedBox(height: 8),
+          const Text(
             'Nutzen Sie die Suchfilter, um bestimmte Kurse schneller und einfacher zu finden.',
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
+          screenWidth > 800
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(child: _buildTextField('Kurstitle')),
+                    const SizedBox(width: 16),
+                    Expanded(child: _buildDropdown("Kursort")),
+                  ],
+                )
+              : Column(
+                  children: [
+                    _buildTextField('Kurstitle'),
+                    const SizedBox(height: 16),
+                    _buildDropdown('Kategorie'),
+                  ],
+                ),
         ],
       ),
+    ));
+  }
+
+  Widget _buildDropdown(String label) {
+    return DropdownButtonFormField<String>(
+      decoration: InputDecoration(
+        labelText: label,
+        border: const OutlineInputBorder(),
+      ),
+      items: ["__"].map((String value) {
+        return DropdownMenuItem<String>(
+          value: value,
+          child: Text(value),
+        );
+      }).toList(),
+      onChanged: (value) {},
+    );
+  }
+
+  Widget _buildTextField(String label) {
+    return TextField(
+        decoration: InputDecoration(
+      labelText: label,
+      border: const OutlineInputBorder(),
     ));
   }
 }
