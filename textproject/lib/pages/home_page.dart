@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(120.0),
+        preferredSize: const Size.fromHeight(80.0),
         child: LayoutBuilder(
           builder: (context, constraints) {
             double screenWidth = constraints.maxWidth;
@@ -57,8 +57,9 @@ class HomePage extends StatelessWidget {
           : null,
       body: const Column(
         children: [
-          Expanded(child: ImageSlider()),
+          ImageSlider(),
           SizedBox(height: 15),
+          SearchFilter(),
           SearchFilter()
         ],
       ),
