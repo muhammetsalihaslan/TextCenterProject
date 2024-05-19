@@ -50,6 +50,41 @@ class _SearchFilterState extends State<SearchFilter> {
                     _buildDropdown('Kategorie'),
                   ],
                 ),
+          const SizedBox(height: 16),
+          screenWidth > 800
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(child: _buildDropdown('Kursort')),
+                    const SizedBox(width: 16),
+                    Expanded(child: _buildDropdown('Sprachniveau')),
+                  ],
+                )
+              : Column(
+                  children: [
+                    _buildDropdown('Kursort'),
+                    const SizedBox(height: 16),
+                    _buildDropdown('Sprachniveau'),
+                  ],
+                ),
+          const SizedBox(height: 16),
+          Align(
+            alignment: Alignment.center,
+            child: SizedBox(
+              width: 520,
+              child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.zero,
+                      )),
+                  child: const Text(
+                    "Kurse finden",
+                    style: TextStyle(color: Colors.white),
+                  )),
+            ),
+          )
         ],
       ),
     ));
