@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(80.0),
+        preferredSize: const Size.fromHeight(70.0),
         child: LayoutBuilder(
           builder: (context, constraints) {
             double screenWidth = constraints.maxWidth;
@@ -20,8 +20,9 @@ class HomePage extends StatelessWidget {
                     ? screenWidth
                     : appBarWidth,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 20.0),
+                  padding: const EdgeInsets.only(top: 10.0),
                   child: AppBar(
+                    backgroundColor: Colors.white,
                     title: GestureDetector(
                       onTap: () {
                         Navigator.pushReplacement(
@@ -55,13 +56,15 @@ class HomePage extends StatelessWidget {
       endDrawer: MediaQuery.of(context).size.width <= 670
           ? _buildDrawer(context)
           : null,
-      body: const Column(
-        children: [
-          ImageSlider(),
-          SizedBox(height: 15),
-          SearchFilter(),
-          SearchFilter()
-        ],
+      body: const SingleChildScrollView(
+        child: Column(
+          children: [
+            ImageSlider(),
+            SizedBox(height: 15),
+            SearchFilter(),
+            SearchFilter()
+          ],
+        ),
       ),
     );
   }

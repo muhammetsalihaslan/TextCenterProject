@@ -38,7 +38,7 @@ class _SearchFilterState extends State<SearchFilter> {
               ? Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Expanded(child: _buildTextField('Kurstitle')),
+                    Expanded(child: _buildDropdown('Kurstitle')),
                     const SizedBox(width: 16),
                     Expanded(child: _buildDropdown("Kursort")),
                   ],
@@ -96,7 +96,7 @@ class _SearchFilterState extends State<SearchFilter> {
         labelText: label,
         border: const OutlineInputBorder(),
       ),
-      items: ["__"].map((String value) {
+      items: ["1", "2", "3", "4", "5"].map((String value) {
         return DropdownMenuItem<String>(
           value: value,
           child: Text(value),
