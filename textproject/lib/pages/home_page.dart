@@ -56,15 +56,8 @@ class HomePage extends StatelessWidget {
       endDrawer: MediaQuery.of(context).size.width <= 670
           ? _buildDrawer(context)
           : null,
-      body: const SingleChildScrollView(
-        child: Column(
-          children: [
-            ImageSlider(),
-            SizedBox(height: 15),
-            SearchFilter(),
-            SearchFilter()
-          ],
-        ),
+      body: const Column(
+        children: [ImageSlider(), SizedBox(height: 15), SearchFilter()],
       ),
     );
   }
