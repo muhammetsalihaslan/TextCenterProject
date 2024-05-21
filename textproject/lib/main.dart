@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:textproject/pages/home_page.dart';
-import 'package:textproject/widgets/search_filter.dart';
+import 'package:textproject/widgets/course_all.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,6 +17,6 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const HomePage());
+        home: const CourseAll());
   }
 }

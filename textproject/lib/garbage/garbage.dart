@@ -46,13 +46,19 @@
 //                 SizedBox(width: 8),
 //                 Text(
 //                   "Suchfilter",
-//                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+//                   style: TextStyle(
+//                     fontSize: 18,
+//                     fontWeight: FontWeight.bold,
+//                     color: Colors.black,
+//                     decoration: TextDecoration.none,
+//                   ),
 //                 ),
 //               ],
 //             ),
 //             const SizedBox(height: 8),
 //             const Text(
 //               'Nutzen Sie die Suchfilter, um bestimmte Kurse schneller und einfacher zu finden.',
+//               style: TextStyle(color: Colors.black),
 //             ),
 //             const SizedBox(height: 16),
 //             screenWidth > 800
@@ -60,27 +66,11 @@
 //                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
 //                     children: [
 //                       Expanded(
-//                         child: _buildDropdown(
-//                           'Kurstitle',
-//                           widget.kurstitles,
-//                           (value) {
-//                             setState(() {
-//                               _kurstitleController.text = value!;
-//                             });
-//                           },
-//                         ),
+//                         child: _buildDropdown('Kurstitle', widget.kurstitles),
 //                       ),
 //                       const SizedBox(width: 16),
 //                       Expanded(
-//                         child: _buildDropdown(
-//                           "Kursort",
-//                           widget.kursorts,
-//                           (value) {
-//                             setState(() {
-//                               _selectedKursort = value;
-//                             });
-//                           },
-//                         ),
+//                         child: _buildDropdown('Kursort', widget.kursorts),
 //                       ),
 //                     ],
 //                   )
@@ -88,15 +78,7 @@
 //                     children: [
 //                       _buildTextField('Kurstitle', _kurstitleController),
 //                       const SizedBox(height: 16),
-//                       _buildDropdown(
-//                         'Kategorie',
-//                         widget.kategorien,
-//                         (value) {
-//                           setState(() {
-//                             _selectedKategorie = value;
-//                           });
-//                         },
-//                       ),
+//                       _buildDropdown('Kategorie', widget.kategorien),
 //                     ],
 //                   ),
 //             const SizedBox(height: 16),
@@ -105,51 +87,20 @@
 //                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
 //                     children: [
 //                       Expanded(
-//                         child: _buildDropdown(
-//                           'Kategorie',
-//                           widget.kategorien,
-//                           (value) {
-//                             setState(() {
-//                               _selectedKategorie = value;
-//                             });
-//                           },
-//                         ),
+//                         child: _buildDropdown('Kategorie', widget.kategorien),
 //                       ),
 //                       const SizedBox(width: 16),
 //                       Expanded(
 //                         child: _buildDropdown(
-//                           'Sprachniveau',
-//                           widget.sprachniveaus,
-//                           (value) {
-//                             setState(() {
-//                               _selectedSprachniveau = value;
-//                             });
-//                           },
-//                         ),
+//                             'Sprachniveau', widget.sprachniveaus),
 //                       ),
 //                     ],
 //                   )
 //                 : Column(
 //                     children: [
-//                       _buildDropdown(
-//                         'Kursort',
-//                         widget.kursorts,
-//                         (value) {
-//                           setState(() {
-//                             _selectedKursort = value;
-//                           });
-//                         },
-//                       ),
+//                       _buildDropdown('Kursort', widget.kursorts),
 //                       const SizedBox(height: 16),
-//                       _buildDropdown(
-//                         'Sprachniveau',
-//                         widget.sprachniveaus,
-//                         (value) {
-//                           setState(() {
-//                             _selectedSprachniveau = value;
-//                           });
-//                         },
-//                       ),
+//                       _buildDropdown('Sprachniveau', widget.sprachniveaus),
 //                     ],
 //                   ),
 //             const SizedBox(height: 16),
@@ -185,16 +136,38 @@
 //     );
 //   }
 
-//   Widget _buildDropdown(
-//       String label, List<String> items, ValueChanged<String?> onChanged) {
-//     return DropdownMenu<String>(
-//       initialSelection: items.first,
-//       onSelected: (String? value) {
-//         onChanged(value);
-//       },
-//       dropdownMenuEntries: items.map<DropdownMenuEntry<String>>((String value) {
-//         return DropdownMenuEntry<String>(value: value, label: value);
+//   Widget _buildDropdown(String label, List<String> items) {
+//     return DropdownButtonFormField<String>(
+//       decoration: InputDecoration(
+//         labelText: label,
+//         border: const OutlineInputBorder(),
+//       ),
+//       items: items.map((String value) {
+//         return DropdownMenuItem<String>(
+//           value: value,
+//           child: Text(value),
+//         );
 //       }).toList(),
+//       onChanged: (value) {
+//         setState(() {
+//           switch (label) {
+//             case 'Kurstitle':
+//               _kurstitleController.text = value!;
+//               break;
+//             case 'Kursort':
+//               _selectedKursort = value;
+//               break;
+//             case 'Kategorie':
+//               _selectedKategorie = value;
+//               break;
+//             case 'Sprachniveau':
+//               _selectedSprachniveau = value;
+//               break;
+//           }
+//         });
+//       },
+//       dropdownColor: Colors.white,
+//       isExpanded: true,
 //     );
 //   }
 

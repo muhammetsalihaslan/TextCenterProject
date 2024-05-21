@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:textproject/widgets/image_silder.dart';
-import 'package:textproject/widgets/search_filter.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -56,8 +55,13 @@ class HomePage extends StatelessWidget {
       endDrawer: MediaQuery.of(context).size.width <= 670
           ? _buildDrawer(context)
           : null,
-      body: const Column(
-        children: [ImageSlider(), SizedBox(height: 15), SearchFilter()],
+      body: const SingleChildScrollView(
+        child: Column(
+          children: [
+            ImageSlider(),
+            SizedBox(height: 15),
+          ],
+        ),
       ),
     );
   }

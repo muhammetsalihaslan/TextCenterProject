@@ -1,13 +1,28 @@
 import 'package:flutter/material.dart';
 
 class SearchFilter extends StatefulWidget {
-  const SearchFilter({super.key});
+  final List<String> kurstitles;
+  final List<String> kursorts;
+  final List<String> kategorien;
+  final List<String> sprachniveaus;
+  final void Function(Map<String, String?> filter) onFilterChanged;
+  const SearchFilter(
+      {super.key,
+      required this.kurstitles,
+      required this.kursorts,
+      required this.kategorien,
+      required this.sprachniveaus,
+      required this.onFilterChanged});
 
   @override
   State<SearchFilter> createState() => _SearchFilterState();
 }
 
 class _SearchFilterState extends State<SearchFilter> {
+  String? _kurstitleController;
+  String? _selectedKursort;
+  String? _selectedKategorie;
+  String? _selectedSprachniveau;
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -40,16 +55,19 @@ class _SearchFilterState extends State<SearchFilter> {
                 ? Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Expanded(child: _buildDropdown('Kurstitle')),
+                      Expanded(
+                          child:
+                              _buildDropdown('Kurstitle', widget.kurstitles)),
                       const SizedBox(width: 16),
-                      Expanded(child: _buildDropdown("Kursort")),
+                      Expanded(
+                          child: _buildDropdown("Kursort", widget.kursorts)),
                     ],
                   )
                 : Column(
                     children: [
-                      _buildDropdown('Kurstitle'),
+                      _buildDropdown('Kurstitle', widget.kurstitles),
                       const SizedBox(height: 16),
-                      _buildDropdown('Kategorie'),
+                      _buildDropdown('Kursort', widget.kursorts),
                     ],
                   ),
             const SizedBox(height: 16),
@@ -57,16 +75,20 @@ class _SearchFilterState extends State<SearchFilter> {
                 ? Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Expanded(child: _buildDropdown('Kursort')),
+                      Expanded(
+                          child:
+                              _buildDropdown('Kategorie', widget.kategorien)),
                       const SizedBox(width: 16),
-                      Expanded(child: _buildDropdown('Sprachniveau')),
+                      Expanded(
+                          child: _buildDropdown(
+                              'Sprachniveau', widget.sprachniveaus)),
                     ],
                   )
                 : Column(
                     children: [
-                      _buildDropdown('Kursort'),
+                      _buildDropdown('Kategorie', widget.kategorien),
                       const SizedBox(height: 16),
-                      _buildDropdown('Sprachniveau'),
+                      _buildDropdown('Sprachniveau', widget.sprachniveaus),
                     ],
                   ),
             const SizedBox(height: 16),
@@ -75,7 +97,14 @@ class _SearchFilterState extends State<SearchFilter> {
               child: SizedBox(
                 width: 520,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    widget.onFilterChanged({
+                      'Kurstitle': _kurstitleController,
+                      'Kursort': _selectedKursort,
+                      'Kategorie': _selectedKategorie,
+                      'Sprachniveau': _selectedSprachniveau,
+                    });
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
                     shape: const RoundedRectangleBorder(
@@ -95,20 +124,37 @@ class _SearchFilterState extends State<SearchFilter> {
     );
   }
 
-  Widget _buildDropdown(String label) {
+  Widget _buildDropdown(String label, List<String> items) {
     return DropdownButtonFormField<String>(
       decoration: InputDecoration(
         labelText: label,
         border: const OutlineInputBorder(),
       ),
-      items: ["1", "2", "3", "4", "5"].map((String value) {
+      items: items.map((String value) {
         return DropdownMenuItem<String>(
           value: value,
           child: Text(value),
         );
       }).toList(),
-      onChanged: (value) {},
-      dropdownColor: Colors.white,
+      onChanged: (value) {
+        setState(() {
+          switch (label) {
+            case 'Kurstitle':
+              _kurstitleController = value;
+              break;
+            case 'Kursort':
+              _selectedKursort = value;
+              break;
+            case 'Kategorie':
+              _selectedKategorie = value;
+              break;
+            case 'Sprachniveau':
+              _selectedSprachniveau = value;
+              break;
+          }
+        });
+      },
+      dropdownColor: Colors.lightBlueAccent,
       isExpanded: true,
     );
   }
