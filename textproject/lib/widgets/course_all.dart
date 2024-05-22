@@ -134,24 +134,19 @@ class CourseAllState extends State<CourseAll> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Kurs Filtreleme'),
-      ),
-      body: isLoading
-          ? const Center(child: CircularProgressIndicator())
-          : Column(
-              children: [
-                SearchFilter(
-                  kurstitles: kurstitles,
-                  kursorts: kursorts,
-                  kategorien: kategorien,
-                  sprachniveaus: sprachniveaus,
-                  onFilterChanged: onFilterChanged,
-                ),
-                CourseList(courses: filteredCourses),
-              ],
-            ),
-    );
+    return isLoading
+        ? const Center(child: CircularProgressIndicator())
+        : Column(
+            children: [
+              SearchFilter(
+                kurstitles: kurstitles,
+                kursorts: kursorts,
+                kategorien: kategorien,
+                sprachniveaus: sprachniveaus,
+                onFilterChanged: onFilterChanged,
+              ),
+              CourseList(courses: filteredCourses),
+            ],
+          );
   }
 }

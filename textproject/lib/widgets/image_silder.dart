@@ -23,6 +23,7 @@ class _ImageSliderState extends State<ImageSlider> {
   void initState() {
     super.initState();
     _timer = Timer.periodic(const Duration(seconds: 5), (Timer timer) {
+      if (!mounted) return;
       if (_currentPage < _imageList.length - 1) {
         setState(() {
           _currentPage++;
@@ -43,6 +44,7 @@ class _ImageSliderState extends State<ImageSlider> {
   @override
   void dispose() {
     _timer.cancel();
+    _pageController.dispose();
     super.dispose();
   }
 

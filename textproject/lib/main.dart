@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:textproject/widgets/course_all.dart';
+import 'package:textproject/pages/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,6 +17,6 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const CourseAll());
+        home: const HomePage());
   }
 }

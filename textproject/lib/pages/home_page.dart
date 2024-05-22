@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:textproject/widgets/course_all.dart';
 import 'package:textproject/widgets/image_silder.dart';
 
 class HomePage extends StatelessWidget {
@@ -56,10 +57,12 @@ class HomePage extends StatelessWidget {
           ? _buildDrawer(context)
           : null,
       body: const SingleChildScrollView(
+        scrollDirection: Axis.vertical,
         child: Column(
           children: [
             ImageSlider(),
             SizedBox(height: 15),
+            CourseAll(),
           ],
         ),
       ),
