@@ -136,7 +136,8 @@ class CourseAllState extends State<CourseAll> {
   Widget build(BuildContext context) {
     return isLoading
         ? const Center(child: CircularProgressIndicator())
-        : Center(
+        : SizedBox(
+            height: 900,
             child: Column(
               children: [
                 SearchFilter(
@@ -146,7 +147,7 @@ class CourseAllState extends State<CourseAll> {
                   sprachniveaus: sprachniveaus,
                   onFilterChanged: onFilterChanged,
                 ),
-                CourseList(courses: filteredCourses),
+                Expanded(child: CourseList(courses: filteredCourses)),
               ],
             ),
           );
