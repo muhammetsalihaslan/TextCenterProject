@@ -57,15 +57,14 @@ class HomePage extends StatelessWidget {
           ? _buildDrawer(context)
           : null,
       body: const SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Column(
-          children: [
-            ImageSlider(),
-            SizedBox(height: 15),
-            CourseAll(),
-          ],
-        ),
-      ),
+          child: Column(
+        children: [
+          ImageSlider(),
+          SizedBox(height: 15),
+          CourseAll(),
+          // Diğer widget'larınızı buraya ekleyebilirsiniz
+        ],
+      )),
     );
   }
 
