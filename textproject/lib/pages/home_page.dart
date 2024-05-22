@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:textproject/widgets/course_all.dart';
+import 'package:textproject/widgets/custom_footer.dart';
 import 'package:textproject/widgets/image_silder.dart';
 
 class HomePage extends StatelessWidget {
@@ -62,6 +63,7 @@ class HomePage extends StatelessWidget {
           ImageSlider(),
           SizedBox(height: 15),
           CourseAll(),
+          CustomFooter()
           // Diğer widget'larınızı buraya ekleyebilirsiniz
         ],
       )),
