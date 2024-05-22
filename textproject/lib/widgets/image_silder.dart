@@ -52,7 +52,7 @@ class _ImageSliderState extends State<ImageSlider> {
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
     return SizedBox(
-        height: screenWidth * 0.3,
+        height: screenWidth > 800 ? screenWidth * 0.25 : screenWidth * 0.4,
         child: PageView.builder(
           controller: _pageController,
           itemCount: _imageList.length,

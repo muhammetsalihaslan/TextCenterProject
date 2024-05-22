@@ -102,6 +102,138 @@ class CourseAllState extends State<CourseAll> {
           "Preis": "159,00 €",
           "Anmeldung bis": "15.05.2024"
         },
+        {
+          "#": "PR-240601-KÖ-A2",
+          "Kurstitle": "Telc Deutsch A2",
+          "Status": "✓",
+          "Kategorie": "SP - Sprachkurse",
+          "Kursort": "Köln",
+          "Zeitraum": "am 01.06.24",
+          "Freie Plätze": "10",
+          "Preis": "159,00 €",
+          "Anmeldung bis": "15.05.2024"
+        },
+        {
+          "#": "PR-240601-KÖ-A2",
+          "Kurstitle": "Telc Deutsch A2",
+          "Status": "✓",
+          "Kategorie": "SP - Sprachkurse",
+          "Kursort": "Köln",
+          "Zeitraum": "am 01.06.24",
+          "Freie Plätze": "10",
+          "Preis": "159,00 €",
+          "Anmeldung bis": "15.05.2024"
+        },
+        {
+          "#": "PR-240601-KÖ-A2",
+          "Kurstitle": "Telc Deutsch A2",
+          "Status": "✓",
+          "Kategorie": "SP - Sprachkurse",
+          "Kursort": "Köln",
+          "Zeitraum": "am 01.06.24",
+          "Freie Plätze": "10",
+          "Preis": "159,00 €",
+          "Anmeldung bis": "15.05.2024"
+        },
+        {
+          "#": "PR-240601-KÖ-A2",
+          "Kurstitle": "Telc Deutsch A2",
+          "Status": "✓",
+          "Kategorie": "SP - Sprachkurse",
+          "Kursort": "Köln",
+          "Zeitraum": "am 01.06.24",
+          "Freie Plätze": "10",
+          "Preis": "159,00 €",
+          "Anmeldung bis": "15.05.2024"
+        },
+        {
+          "#": "PR-240601-KÖ-A2",
+          "Kurstitle": "Telc Deutsch A2",
+          "Status": "✓",
+          "Kategorie": "SP - Sprachkurse",
+          "Kursort": "Köln",
+          "Zeitraum": "am 01.06.24",
+          "Freie Plätze": "10",
+          "Preis": "159,00 €",
+          "Anmeldung bis": "15.05.2024"
+        },
+        {
+          "#": "PR-240601-KÖ-A2",
+          "Kurstitle": "Telc Deutsch A2",
+          "Status": "✓",
+          "Kategorie": "SP - Sprachkurse",
+          "Kursort": "Köln",
+          "Zeitraum": "am 01.06.24",
+          "Freie Plätze": "10",
+          "Preis": "159,00 €",
+          "Anmeldung bis": "15.05.2024"
+        },
+        {
+          "#": "PR-240601-KÖ-A2",
+          "Kurstitle": "Telc Deutsch A2",
+          "Status": "✓",
+          "Kategorie": "SP - Sprachkurse",
+          "Kursort": "Köln",
+          "Zeitraum": "am 01.06.24",
+          "Freie Plätze": "10",
+          "Preis": "159,00 €",
+          "Anmeldung bis": "15.05.2024"
+        },
+        {
+          "#": "PR-240601-KÖ-A2",
+          "Kurstitle": "Telc Deutsch A2",
+          "Status": "✓",
+          "Kategorie": "SP - Sprachkurse",
+          "Kursort": "Köln",
+          "Zeitraum": "am 01.06.24",
+          "Freie Plätze": "10",
+          "Preis": "159,00 €",
+          "Anmeldung bis": "15.05.2024"
+        },
+        {
+          "#": "PR-240601-KÖ-A2",
+          "Kurstitle": "Telc Deutsch A2",
+          "Status": "✓",
+          "Kategorie": "SP - Sprachkurse",
+          "Kursort": "Köln",
+          "Zeitraum": "am 01.06.24",
+          "Freie Plätze": "10",
+          "Preis": "159,00 €",
+          "Anmeldung bis": "15.05.2024"
+        },
+        {
+          "#": "PR-240601-KÖ-A2",
+          "Kurstitle": "Telc Deutsch A2",
+          "Status": "✓",
+          "Kategorie": "SP - Sprachkurse",
+          "Kursort": "Köln",
+          "Zeitraum": "am 01.06.24",
+          "Freie Plätze": "10",
+          "Preis": "159,00 €",
+          "Anmeldung bis": "15.05.2024"
+        },
+        {
+          "#": "PR-240601-KÖ-A2",
+          "Kurstitle": "Telc Deutsch A2",
+          "Status": "✓",
+          "Kategorie": "SP - Sprachkurse",
+          "Kursort": "Köln",
+          "Zeitraum": "am 01.06.24",
+          "Freie Plätze": "10",
+          "Preis": "159,00 €",
+          "Anmeldung bis": "15.05.2024"
+        },
+        {
+          "#": "PR-240601-KÖ-A2",
+          "Kurstitle": "Telc Deutsch A2",
+          "Status": "✓",
+          "Kategorie": "SP - Sprachkurse",
+          "Kursort": "Köln",
+          "Zeitraum": "am 01.06.24",
+          "Freie Plätze": "10",
+          "Preis": "159,00 €",
+          "Anmeldung bis": "15.05.2024"
+        },
       ];
       filteredCourses = List.from(courses); // Initially, show all courses
       isLoading = false;
@@ -137,7 +269,7 @@ class CourseAllState extends State<CourseAll> {
     return isLoading
         ? const Center(child: CircularProgressIndicator())
         : SizedBox(
-            height: 900,
+            height: 1200,
             child: Column(
               children: [
                 SearchFilter(
