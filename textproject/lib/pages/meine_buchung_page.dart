@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:textproject/widgets/adrees_form.dart';
+import 'package:textproject/widgets/altern_rech.dart';
 import 'package:textproject/widgets/kontakt_daten.dart';
 import 'package:textproject/widgets/meine_buchung.dart';
 
@@ -24,7 +25,16 @@ class _MeineBuchungPageState extends State<MeineBuchungPage> {
           children: [
             BucHung(bookingDetails: widget.bookingDetails),
             const Row(
-              children: [KontaktDaten(), AdressForm()],
+              children: [
+                KontaktDaten(),
+                Column(
+                  children: [
+                    AdressForm(),
+                    AlternRech(),
+                    AlternRech(),
+                  ],
+                )
+              ],
             )
           ],
         ),
