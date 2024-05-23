@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:textproject/pages/exam_page.dart';
 import 'package:textproject/widgets/course_all.dart';
 import 'package:textproject/widgets/custom_footer.dart';
 import 'package:textproject/widgets/image_silder.dart';
@@ -74,7 +75,14 @@ class HomePage extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: TextButton(
-          onPressed: () {},
+          onPressed: () {
+            if (title == "Exams") {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ExamChoosePage()),
+              );
+            }
+          },
           child: Text(
             title,
             style: const TextStyle(
@@ -117,7 +125,10 @@ class HomePage extends StatelessWidget {
     return ListTile(
       title: Text(title),
       onTap: () {
-        Navigator.pop(context);
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const ExamChoosePage()),
+        );
       },
     );
   }
