@@ -125,10 +125,12 @@ class HomePage extends StatelessWidget {
     return ListTile(
       title: Text(title),
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const ExamChoosePage()),
-        );
+        if (title == "Exams") {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const ExamChoosePage()),
+          );
+        }
       },
     );
   }
