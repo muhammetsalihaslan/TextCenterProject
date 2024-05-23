@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:textproject/pages/meineBuchung_page.dart';
 
 class CourseDetailsPage extends StatelessWidget {
   final Map<String, dynamic> course;
@@ -57,7 +58,14 @@ class CourseDetailsPage extends StatelessWidget {
                             minimumSize: const Size(150, 40),
                           ),
                           onPressed: () {
-                            // Şu anda, butonun herhangi bir işlemi yok
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MeineBuchungPage(
+                                  bookingDetails: course,
+                                ),
+                              ),
+                            );
                           },
                           child: const Text('Jetzt buchen'),
                         ),
