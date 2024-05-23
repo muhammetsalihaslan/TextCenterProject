@@ -57,19 +57,16 @@ class HomePage extends StatelessWidget {
       endDrawer: MediaQuery.of(context).size.width <= 670
           ? _buildDrawer(context)
           : null,
-      body: const SizedBox(
-        height: 1200,
-        child: SingleChildScrollView(
-            child: Column(
-          children: [
-            ImageSlider(),
-            SizedBox(height: 15),
-            CourseAll(),
-            CustomFooter()
-            // Diğer widget'larınızı buraya ekleyebilirsiniz
-          ],
-        )),
-      ),
+      body: const SingleChildScrollView(
+          child: Column(
+        children: [
+          ImageSlider(),
+          SizedBox(height: 15),
+          CourseAll(),
+          CustomFooter()
+          // Diğer widget'larınızı buraya ekleyebilirsiniz
+        ],
+      )),
     );
   }
 

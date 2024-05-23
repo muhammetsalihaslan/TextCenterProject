@@ -1,183 +1,97 @@
-// import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
-// class SearchFilter extends StatefulWidget {
-//   final List<String> kurstitles;
-//   final List<String> kursorts;
-//   final List<String> kategorien;
-//   final List<String> sprachniveaus;
-//   final void Function(Map<String, String?> filter) onFilterChanged;
+class CourseList extends StatelessWidget {
+  final List<Map<String, dynamic>> courses;
 
-//   const SearchFilter({
-//     required this.kurstitles,
-//     required this.kursorts,
-//     required this.kategorien,
-//     required this.sprachniveaus,
-//     required this.onFilterChanged,
-//     super.key,
-//   });
+  const CourseList({required this.courses, super.key});
 
-//   @override
-//   State<SearchFilter> createState() => _SearchFilterState();
-// }
-
-// class _SearchFilterState extends State<SearchFilter> {
-//   final TextEditingController _kurstitleController = TextEditingController();
-//   String? _selectedKursort;
-//   String? _selectedKategorie;
-//   String? _selectedSprachniveau;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     double screenWidth = MediaQuery.of(context).size.width;
-//     double containerWidth =
-//         screenWidth > 800 ? screenWidth * 3 / 4 : screenWidth;
-
-//     return Center(
-//       child: Container(
-//         width: containerWidth,
-//         color: Colors.lightBlueAccent,
-//         padding: const EdgeInsets.all(20),
-//         child: Column(
-//           crossAxisAlignment: CrossAxisAlignment.start,
-//           children: [
-//             const Row(
-//               children: [
-//                 Icon(Icons.search, color: Colors.blue),
-//                 SizedBox(width: 8),
-//                 Text(
-//                   "Suchfilter",
-//                   style: TextStyle(
-//                     fontSize: 18,
-//                     fontWeight: FontWeight.bold,
-//                     color: Colors.black,
-//                     decoration: TextDecoration.none,
-//                   ),
-//                 ),
-//               ],
-//             ),
-//             const SizedBox(height: 8),
-//             const Text(
-//               'Nutzen Sie die Suchfilter, um bestimmte Kurse schneller und einfacher zu finden.',
-//               style: TextStyle(color: Colors.black),
-//             ),
-//             const SizedBox(height: 16),
-//             screenWidth > 800
-//                 ? Row(
-//                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                     children: [
-//                       Expanded(
-//                         child: _buildDropdown('Kurstitle', widget.kurstitles),
-//                       ),
-//                       const SizedBox(width: 16),
-//                       Expanded(
-//                         child: _buildDropdown('Kursort', widget.kursorts),
-//                       ),
-//                     ],
-//                   )
-//                 : Column(
-//                     children: [
-//                       _buildTextField('Kurstitle', _kurstitleController),
-//                       const SizedBox(height: 16),
-//                       _buildDropdown('Kategorie', widget.kategorien),
-//                     ],
-//                   ),
-//             const SizedBox(height: 16),
-//             screenWidth > 800
-//                 ? Row(
-//                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                     children: [
-//                       Expanded(
-//                         child: _buildDropdown('Kategorie', widget.kategorien),
-//                       ),
-//                       const SizedBox(width: 16),
-//                       Expanded(
-//                         child: _buildDropdown(
-//                             'Sprachniveau', widget.sprachniveaus),
-//                       ),
-//                     ],
-//                   )
-//                 : Column(
-//                     children: [
-//                       _buildDropdown('Kursort', widget.kursorts),
-//                       const SizedBox(height: 16),
-//                       _buildDropdown('Sprachniveau', widget.sprachniveaus),
-//                     ],
-//                   ),
-//             const SizedBox(height: 16),
-//             Align(
-//               alignment: Alignment.center,
-//               child: SizedBox(
-//                 width: 520,
-//                 child: ElevatedButton(
-//                   onPressed: () {
-//                     widget.onFilterChanged({
-//                       'Kurstitle': _kurstitleController.text,
-//                       'Kursort': _selectedKursort,
-//                       'Kategorie': _selectedKategorie,
-//                       'Sprachniveau': _selectedSprachniveau,
-//                     });
-//                   },
-//                   style: ElevatedButton.styleFrom(
-//                     backgroundColor: Colors.blue,
-//                     shape: const RoundedRectangleBorder(
-//                       borderRadius: BorderRadius.zero,
-//                     ),
-//                   ),
-//                   child: const Text(
-//                     "Kurse finden",
-//                     style: TextStyle(color: Colors.white),
-//                   ),
-//                 ),
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-
-//   Widget _buildDropdown(String label, List<String> items) {
-//     return DropdownButtonFormField<String>(
-//       decoration: InputDecoration(
-//         labelText: label,
-//         border: const OutlineInputBorder(),
-//       ),
-//       items: items.map((String value) {
-//         return DropdownMenuItem<String>(
-//           value: value,
-//           child: Text(value),
-//         );
-//       }).toList(),
-//       onChanged: (value) {
-//         setState(() {
-//           switch (label) {
-//             case 'Kurstitle':
-//               _kurstitleController.text = value!;
-//               break;
-//             case 'Kursort':
-//               _selectedKursort = value;
-//               break;
-//             case 'Kategorie':
-//               _selectedKategorie = value;
-//               break;
-//             case 'Sprachniveau':
-//               _selectedSprachniveau = value;
-//               break;
-//           }
-//         });
-//       },
-//       dropdownColor: Colors.white,
-//       isExpanded: true,
-//     );
-//   }
-
-//   Widget _buildTextField(String label, TextEditingController controller) {
-//     return TextField(
-//       controller: controller,
-//       decoration: InputDecoration(
-//         labelText: label,
-//         border: const OutlineInputBorder(),
-//       ),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        if (constraints.maxWidth > 1000) {
+          // Render DataTable for larger screens
+          return Expanded(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: DataTable(
+                columns: const [
+                  DataColumn(label: Text('#')),
+                  DataColumn(label: Text('Kurstitle')),
+                  DataColumn(label: Text('Status')),
+                  DataColumn(label: Text('Kategorie')),
+                  DataColumn(label: Text('Kursort')),
+                  DataColumn(label: Text('Zeitraum')),
+                  DataColumn(label: Text('Freie Plätze')),
+                  DataColumn(label: Text('Preis')),
+                  DataColumn(label: Text('Anmeldung bis')),
+                  DataColumn(label: Text('Details')),
+                ],
+                rows: courses.map((course) {
+                  return DataRow(
+                    cells: [
+                      DataCell(Text(course['#'] ?? '')),
+                      DataCell(Text(course['Kurstitle'] ?? '')),
+                      DataCell(Text(course['Status'] ?? '')),
+                      DataCell(Text(course['Kategorie'] ?? '')),
+                      DataCell(Text(course['Kursort'] ?? '')),
+                      DataCell(Text(course['Zeitraum'] ?? '')),
+                      DataCell(Text(course['Freie Plätze'] ?? '')),
+                      DataCell(Text(course['Preis'] ?? '')),
+                      DataCell(Text(course['Anmeldung bis'] ?? '')),
+                      DataCell(ElevatedButton(
+                        onPressed: () {},
+                        child: const Text('Details'),
+                      )),
+                    ],
+                  );
+                }).toList(),
+              ),
+            ),
+          );
+        } else {
+          // Render Cards for smaller screens
+          return Expanded(
+            child: ListView.builder(
+              itemCount: courses.length,
+              itemBuilder: (context, index) {
+                final course = courses[index];
+                return Card(
+                  margin: const EdgeInsets.all(8.0),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Kursnr. ${course['#']}',
+                            style:
+                                const TextStyle(fontWeight: FontWeight.bold)),
+                        const SizedBox(height: 8.0),
+                        Text(course['Kurstitle'] ?? '',
+                            style: const TextStyle(
+                                fontSize: 18.0, color: Colors.blue)),
+                        const SizedBox(height: 8.0),
+                        Text('Status: ${course['Status']}'),
+                        Text('Kategorie: ${course['Kategorie']}'),
+                        Text('Kursort: ${course['Kursort']}'),
+                        Text('Zeitraum: ${course['Zeitraum']}'),
+                        Text('Freie Plätze: ${course['Freie Plätze']}'),
+                        Text('Preis: ${course['Preis']}'),
+                        Text('Anmeldung bis: ${course['Anmeldung bis']}'),
+                        const SizedBox(height: 8.0),
+                        ElevatedButton(
+                          onPressed: () {},
+                          child: const Text('Details'),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
+          );
+        }
+      },
+    );
+  }
+}
