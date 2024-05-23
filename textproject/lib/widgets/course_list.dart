@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:textproject/pages/courseDetail_page.dart';
 
 class CourseList extends StatefulWidget {
   final List<Map<String, dynamic>> courses;
@@ -73,7 +74,15 @@ class CourseListState extends State<CourseList> {
                           DataCell(Text(course['Preis'] ?? '')),
                           DataCell(Text(course['Anmeldung bis'] ?? '')),
                           DataCell(ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      CourseDetailsPage(course: course),
+                                ),
+                              );
+                            },
                             child: const Text('Details'),
                           )),
                         ],
@@ -111,7 +120,15 @@ class CourseListState extends State<CourseList> {
                             Text('Anmeldung bis: ${course['Anmeldung bis']}'),
                             const SizedBox(height: 8.0),
                             ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        CourseDetailsPage(course: course),
+                                  ),
+                                );
+                              },
                               child: const Text('Details'),
                             ),
                           ],
