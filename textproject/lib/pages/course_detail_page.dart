@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:textproject/pages/meineBuchung_page.dart';
+import 'package:textproject/pages/meine_buchung_page.dart';
 
 class CourseDetailsPage extends StatelessWidget {
   final Map<String, dynamic> course;

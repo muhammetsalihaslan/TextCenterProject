@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:textproject/pages/courseDetail_page.dart';
+import 'package:textproject/pages/course_detail_page.dart';
 
 class CourseList extends StatefulWidget {
   final List<Map<String, dynamic>> courses;

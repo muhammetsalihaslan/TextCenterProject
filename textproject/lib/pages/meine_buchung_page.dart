@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:textproject/widgets/adrees_form.dart';
+import 'package:textproject/widgets/kontakt_daten.dart';
 import 'package:textproject/widgets/meine_buchung.dart';
 
 class MeineBuchungPage extends StatefulWidget {
@@ -17,10 +19,15 @@ class _MeineBuchungPageState extends State<MeineBuchungPage> {
       appBar: AppBar(
         title: const Text('Mein Buchung'),
       ),
-      body: Column(
-        children: [
-          BucHung(bookingDetails: widget.bookingDetails),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            BucHung(bookingDetails: widget.bookingDetails),
+            const Row(
+              children: [KontaktDaten(), AdressForm()],
+            )
+          ],
+        ),
       ),
     );
   }
