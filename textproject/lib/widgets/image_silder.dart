@@ -11,7 +11,7 @@ class ImageSlider extends StatefulWidget {
 class _ImageSliderState extends State<ImageSlider> {
   final PageController _pageController = PageController(initialPage: 0);
   final List<String> _imageList = [
-    'assets/bodyimg/exams.webp',
+    'assets/bodyimg/exams.png',
     'assets/bodyimg/exam2.webp',
     'assets/bodyimg/exam3.webp',
   ];

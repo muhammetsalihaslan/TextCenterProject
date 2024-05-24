@@ -29,10 +29,10 @@ class CustomDrawer extends StatelessWidget {
           ),
         ),
       ),
-      _buildDrawerItem('Exams', context),
-      _buildDrawerItem('Kurse', context),
-      _buildDrawerItem('Prüfungen', context),
-      _buildDrawerItem('Kontakt', context),
+      _buildDrawerItem('PRÜFUNGEN', context),
+      _buildDrawerItem('STANDORTE', context),
+      _buildDrawerItem('KONTAKT', context),
+      _buildDrawerItem('ÜBER UNS', context),
     ]));
   }
 
@@ -40,7 +40,7 @@ class CustomDrawer extends StatelessWidget {
     return ListTile(
       title: Text(title),
       onTap: () {
-        if (title == "Exams") {
+        if (title == "PRÜFUNGEN") {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => const ExamChoosePage()),

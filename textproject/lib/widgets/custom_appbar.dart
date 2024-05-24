@@ -51,7 +51,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       padding: const EdgeInsets.only(right: 5),
       child: TextButton(
           onPressed: () {
-            if (title == "Exams") {
+            if (title == "PRÜFUNGEN") {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const ExamChoosePage()),
