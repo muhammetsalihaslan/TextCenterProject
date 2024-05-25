@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:textproject/widgets/custom_appbar.dart';
 import 'package:textproject/widgets/custom_drawer.dart';
 import 'package:textproject/widgets/custom_footer.dart';
+import 'package:textproject/widgets/home_part_body.dart';
 import 'package:textproject/widgets/image_silder.dart';
 
 class HomePage extends StatelessWidget {
@@ -19,6 +20,7 @@ class HomePage extends StatelessWidget {
         children: [
           ImageSlider(),
           SizedBox(height: 15),
+          HomePartBody(),
           CustomFooter(),
           // Diğer widget'larınızı buraya ekleyebilirsiniz
         ],

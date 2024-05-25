@@ -1,115 +1,107 @@
 // import 'package:flutter/material.dart';
-// import 'package:textproject/widgets/meine_buchung.dart';
 
-// class CourseDetailsPage extends StatelessWidget {
-//   final Map<String, dynamic> course;
+// class HomePartBody extends StatefulWidget {
+//   const HomePartBody({super.key});
 
-//   const CourseDetailsPage({required this.course, super.key});
+//   @override
+//   State<HomePartBody> createState() => _HomePartBodyState();
+// }
+
+// class _HomePartBodyState extends State<HomePartBody> {
+//   final List<String> services = [
+//     'Web Tasarımı',
+//     'Mobil Uygulama Geliştirme',
+//     'Dijital Pazarlama',
+//     'Danışmanlık Hizmetleri',
+//     'SEO Optimizasyonu',
+//     'Veri Analitiği',
+//   ];
 
 //   @override
 //   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: const Text('Kursdetails'),
-//       ),
-//       body: Row(
+//     return SingleChildScrollView(
+//       child: Column(
+//         crossAxisAlignment: CrossAxisAlignment.start,
 //         children: [
-//           Padding(
-//             padding: const EdgeInsets.all(16.0),
-//             child: Container(
-//               width: 500,
-//               height: 500,
-//               decoration: BoxDecoration(
-//                 color: Colors.blue[900],
-//                 borderRadius: BorderRadius.circular(10.0),
+//           const Text(
+//             'Über Uns',
+//             style: TextStyle(
+//               fontSize: 24,
+//               fontWeight: FontWeight.bold,
+//             ),
+//           ),
+//           const SizedBox(height: 10),
+//           const Padding(
+//             padding: EdgeInsets.symmetric(horizontal: 20),
+//             child: Text(
+//               'Biz XYZ Şirketi olarak 2005 yılından beri müşterilerimize en iyi hizmeti sunmak için çalışıyoruz. Misyonumuz, yenilikçi çözümlerle müşterilerimizin beklentilerini aşmaktır. Vizyonumuz ise, alanımızda lider ve güvenilir bir marka olmaktır. Biz XYZ Şirketi olarak 2005 yılından beri müşterilerimize en iyi hizmeti sunmak için çalışıyoruz. Misyonumuz, yenilikçi çözümlerle müşterilerimizin beklentilerini aşmaktır. Vizyonumuz ise, alanımızda lider ve güvenilir bir marka olmaktır. Biz XYZ Şirketi olarak 2005 yılından beri müşterilerimize en iyi hizmeti sunmak için çalışıyoruz. Misyonumuz, yenilikçi çözümlerle müşterilerimizin beklentilerini aşmaktır. Vizyonumuz ise, alanımızda lider ve güvenilir bir marka olmaktır. Biz XYZ Şirketi olarak 2005 yılından beri müşterilerimize en iyi hizmeti sunmak için çalışıyoruz. Misyonumuz, yenilikçi çözümlerle müşterilerimizin beklentilerini aşmaktır. Vizyonumuz ise, alanımızda lider ve güvenilir bir marka olmaktır.',
+//               style: TextStyle(fontSize: 16),
+//             ),
+//           ),
+//           const SizedBox(height: 20),
+//           const Padding(
+//             padding: EdgeInsets.symmetric(horizontal: 20),
+//             child: Text(
+//               'Hizmetlerimiz',
+//               style: TextStyle(
+//                 fontSize: 24,
+//                 fontWeight: FontWeight.bold,
 //               ),
-//               child: Padding(
-//                 padding: const EdgeInsets.all(16.0),
-//                 child: Center(
-//                   child: Column(
-//                     crossAxisAlignment: CrossAxisAlignment.start,
-//                     children: [
-//                       const Row(
-//                         children: [
-//                           Icon(Icons.info, color: Colors.white),
-//                           SizedBox(width: 8.0),
-//                           Text('Kursdetails',
-//                               style: TextStyle(
-//                                   color: Colors.white, fontSize: 20.0)),
-//                         ],
-//                       ),
-//                       const SizedBox(height: 16.0),
-//                       buildDetailRow('Kurstitle', course['Kurstitle']),
-//                       buildDetailRow('Zusatzleistung',
-//                           'Postversand - Zertifikate / Ergebnisbogen'),
-//                       buildDetailRow('Zeitraum', course['Zeitraum']),
-//                       buildDetailRow('Status', 'laufender Kurs',
-//                           icon: Icons.check_circle),
-//                       buildDetailRow('Kategorie', course['Kategorie']),
-//                       buildDetailRow('Sprachniveau', 'A1'),
-//                       buildDetailRow('Freie Plätze', '', icon: Icons.person),
-//                       buildDetailRow('Preis', course['Preis']),
-//                       const SizedBox(height: 16.0),
-//                       Center(
-//                         child: ElevatedButton(
-//                           style: ElevatedButton.styleFrom(
-//                             foregroundColor: Colors.white,
-//                             backgroundColor: Colors.green,
-//                             minimumSize: const Size(150, 40),
+//             ),
+//           ),
+//           const SizedBox(height: 10),
+//           Container(
+//             height: 150,
+//             padding: const EdgeInsets.symmetric(horizontal: 20),
+//             child: ListView.builder(
+//               scrollDirection: Axis.horizontal,
+//               itemCount: services.length,
+//               itemBuilder: (context, index) {
+//                 return Padding(
+//                   padding: const EdgeInsets.all(8.0),
+//                   child: Card(
+//                     elevation: 4,
+//                     child: Container(
+//                       width: 120,
+//                       child: Center(
+//                         child: Padding(
+//                           padding: const EdgeInsets.all(8.0),
+//                           child: Text(
+//                             services[index],
+//                             textAlign: TextAlign.center,
+//                             style: TextStyle(fontSize: 16),
 //                           ),
-//                           onPressed: () {
-//                             Navigator.push(
-//                               context,
-//                               MaterialPageRoute(
-//                                 builder: (context) => MeineBuchungPage(
-//                                   bookingDetails: course,
-//                                 ),
-//                               ),
-//                             );
-//                           },
-//                           child: const Text('Jetzt buchen'),
 //                         ),
 //                       ),
-//                     ],
+//                     ),
 //                   ),
-//                 ),
-//               ),
+//                 );
+//               },
 //             ),
 //           ),
 //         ],
 //       ),
 //     );
 //   }
+// }
 
-//   Widget buildDetailRow(String label, String value, {IconData? icon}) {
-//     return Padding(
-//       padding: const EdgeInsets.symmetric(vertical: 4.0),
-//       child: Row(
-//         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//         children: [
-//           Text(
-//             label,
-//             style: const TextStyle(
-//                 color: Colors.white, fontWeight: FontWeight.bold),
-//           ),
-//           if (icon != null) ...[
-//             Row(
-//               children: [
-//                 Text(
-//                   value,
-//                   style: const TextStyle(color: Colors.white),
-//                 ),
-//                 const SizedBox(width: 4.0),
-//                 Icon(icon, color: Colors.white),
-//               ],
-//             )
-//           ] else ...[
-//             Text(
-//               value,
-//               style: const TextStyle(color: Colors.white),
-//             ),
-//           ]
-//         ],
+// void main() {
+//   runApp(MyApp());
+// }
+
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Information Page',
+//       theme: ThemeData(
+//         primarySwatch: Colors.blue,
+//       ),
+//       home: Scaffold(
+//         appBar: AppBar(
+//           title: Text('Ana Sayfa'),
+//         ),
+//         body: HomePartBody(),
 //       ),
 //     );
 //   }
