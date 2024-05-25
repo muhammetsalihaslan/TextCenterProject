@@ -21,7 +21,9 @@ class HomePage extends StatelessWidget {
           ImageSlider(),
           SizedBox(height: 15),
           HomePartBody(),
+
           CustomFooter(),
+
           // Diğer widget'larınızı buraya ekleyebilirsiniz
         ],
       )),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:textproject/pages/exam_page.dart';
+import 'package:textproject/widgets/standorte_widget.dart';
 
 class HomePartBody extends StatefulWidget {
   const HomePartBody({super.key});
@@ -20,6 +22,14 @@ class _HomePartBodyState extends State<HomePartBody> {
     'Telc German A12',
     'Telc German A85',
   ];
+
+  void navigateToExamPage(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const ExamChoosePage()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -62,19 +72,25 @@ class _HomePartBodyState extends State<HomePartBody> {
             scrollDirection: Axis.horizontal,
             itemCount: services.length,
             itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Card(
-                  elevation: 4,
-                  child: SizedBox(
-                    width: 120,
-                    child: Center(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          services[index],
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(fontSize: 16),
+              return MouseRegion(
+                cursor: SystemMouseCursors.click,
+                child: GestureDetector(
+                  onTap: () => navigateToExamPage(context),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Card(
+                      elevation: 4,
+                      child: SizedBox(
+                        width: 120,
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              services[index],
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(fontSize: 16),
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -84,6 +100,7 @@ class _HomePartBodyState extends State<HomePartBody> {
             },
           ),
         ),
+        const SizedBox(height: 10),
       ],
     );
   }
