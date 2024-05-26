@@ -15,7 +15,7 @@ class ServicesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Ekran genişliğine göre crossAxisCount değerini belirleyin
-    int crossAxisCount = (services.length / 2) as int;
+    int crossAxisCount = (services.length / 2).floor();
     if (MediaQuery.of(context).size.width <= 800) {
       crossAxisCount = 3;
     }

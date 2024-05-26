@@ -22,6 +22,9 @@ class _HomePartBodyState extends State<HomePartBody> {
     'Telc German 12',
     'Telc German A12',
     'Telc German A85',
+    'Telc German A85',
+    'Telc German A85',
+    'Telc German A85',
   ];
 
   final List<Map<String, String>> mockStandorte = [
