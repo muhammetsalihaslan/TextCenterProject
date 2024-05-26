@@ -1,38 +1,29 @@
 // import 'package:flutter/material.dart';
-// import 'dart:async';
+// import 'package:textproject/pages/exam_page.dart';
+// import 'package:textproject/widgets/standorte_widget.dart';
 
-// void main() {
-//   runApp(MyApp());
-// }
+// class HomePartBody extends StatefulWidget {
+//   const HomePartBody({super.key});
 
-// class MyApp extends StatelessWidget {
 //   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Standorte Widget',
-//       theme: ThemeData(
-//         primarySwatch: Colors.blue,
-//       ),
-//       home: Scaffold(
-//         appBar: AppBar(
-//           title: const Text('Standorte'),
-//         ),
-//         body: StandorteWidget(),
-//       ),
-//     );
-//   }
+//   State<HomePartBody> createState() => _HomePartBodyState();
 // }
 
-// class StandorteWidget extends StatefulWidget {
-//   @override
-//   _StandorteWidgetState createState() => _StandorteWidgetState();
-// }
+// class _HomePartBodyState extends State<HomePartBody> {
+//   final List<String> services = [
+//     'Telc German A1',
+//     'Telc German A2',
+//     'Telc German B1',
+//     'Telc German B2',
+//     'Telc German C1',
+//     'Telc German C2',
+//     'Telc German BBC',
+//     'Telc German 12',
+//     'Telc German A12',
+//     'Telc German A85',
+//   ];
 
-// class _StandorteWidgetState extends State<StandorteWidget> {
-//   PageController? _pageController;
-//   late Timer _timer;
-
-//   final List<Map<String, String>> standorte = [
+//   final List<Map<String, String>> mockStandorte = [
 //     {
 //       'title': 'Akademisches Bildungszentrum',
 //       'address': 'Rummelstr. 15, 67655 Kaiserslautern',
@@ -54,151 +45,130 @@
 //       'email': 'info[at]lernzirkel-online.de',
 //       'website': 'https://lernzirkel-online.de/',
 //     },
-//     // Ek standorte verileri burada eklenebilir.
+//     {
+//       'title': 'Brüder Grimm Bildungszentrum',
+//       'address': 'Langstraße 60, 63450 Hanau',
+//       'phone': '+49 6181 12506',
+//       'email': 'info[at]bruedergrimm.net',
+//       'website': 'https://bruedergrimm.net/',
+//     },
+//     {
+//       'title': 'Mainlingua',
+//       'address': 'Zeil 41, 60313 Frankfurt am Main',
+//       'phone': '+49 6971712874',
+//       'email': 'info[at]mainlingua.de',
+//       'website': 'https://mainlingua.de/',
+//     },
+//     {
+//       'title': 'Akademisches Bildungs-Centrum',
+//       'address': 'Rhabarunstraße 5, 55118 Mainz',
+//       'phone': '+49 6131 385 147',
+//       'email': 'kontakt[at]abc-mainz.de',
+//       'website': 'https://www.abc-mainz.de/',
+//     },
+//     {
+//       'title': 'Akademische Bildungsplattform',
+//       'address': 'Eisenschmiede 88, 34127 Kassel',
+//       'phone': '+49561 890202',
+//       'email': 'info[at]abplattform.de',
+//       'website': 'https://abplattform.de/',
+//     },
+//     {
+//       'title': 'Delphin',
+//       'address': 'Schwalbacher Str. 34, 65183 Wiesbaden',
+//       'phone': '+49 611 3603730',
+//       'email': 'info[at]delphin-ev.de',
+//       'website': 'https://delphin-ev.de/',
+//     },
+//     {
+//       'title': 'LernPoint',
+//       'address': 'Bismarckstraße 2, 61169 Friedberg',
+//       'phone': '+49 6031 166914',
+//       'email': 'info[at]lernpoint-ev.de',
+//       'website': 'https://lernpoint-ev.de/',
+//     },
 //   ];
 
-//   @override
-//   void initState() {
-//     super.initState();
-//     _pageController = PageController();
-//     _timer = Timer.periodic(const Duration(seconds: 3), (Timer timer) {
-//       if (_pageController!.page == standorte.length - 1) {
-//         _pageController!.animateToPage(0,
-//             duration: const Duration(milliseconds: 400), curve: Curves.easeInOut);
-//       } else {
-//         _pageController!.nextPage(
-//             duration: const Duration(milliseconds: 400), curve: Curves.easeInOut);
-//       }
-//     });
-//   }
-
-//   @override
-//   void dispose() {
-//     _timer.cancel();
-//     _pageController?.dispose();
-//     super.dispose();
+//   void navigateToExamPage(BuildContext context) {
+//     Navigator.push(
+//       context,
+//       MaterialPageRoute(builder: (context) => const ExamChoosePage()),
+//     );
 //   }
 
 //   @override
 //   Widget build(BuildContext context) {
-//     return Padding(
-//       padding: const EdgeInsets.all(16.0),
-//       child: Column(
-//         crossAxisAlignment: CrossAxisAlignment.start,
-//         children: [
-//           const Text(
-//             'Standorte',
+//     return Column(
+//       crossAxisAlignment: CrossAxisAlignment.start,
+//       children: [
+//         const Padding(
+//           padding: EdgeInsets.symmetric(horizontal: 20),
+//           child: Text(
+//             'Uber Uns',
 //             style: TextStyle(
 //               fontSize: 24,
 //               fontWeight: FontWeight.bold,
 //             ),
 //           ),
-//           const SizedBox(height: 10),
-//           Expanded(
-//             child: Stack(
-//               children: [
-//                 PageView.builder(
-//                   controller: _pageController,
-//                   itemCount: standorte.length,
-//                   itemBuilder: (context, index) {
-//                     final standort = standorte[index];
-//                     return Padding(
-//                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
-//                       child: Card(
-//                         elevation: 4,
-//                         shape: RoundedRectangleBorder(
-//                           borderRadius: BorderRadius.circular(8),
-//                           side: const BorderSide(color: Colors.blue, width: 1),
-//                         ),
-//                         child: Container(
-//                           padding: const EdgeInsets.all(16),
-//                           child: Column(
-//                             crossAxisAlignment: CrossAxisAlignment.start,
-//                             children: [
-//                               Text(
-//                                 standort['title']!,
-//                                 style: const TextStyle(
-//                                   fontSize: 18,
-//                                   fontWeight: FontWeight.bold,
-//                                 ),
-//                               ),
-//                               const SizedBox(height: 8),
-//                               Text(
-//                                 standort['address']!,
-//                                 style: TextStyle(
-//                                   fontSize: 14,
-//                                   color: Colors.grey[600],
-//                                 ),
-//                               ),
-//                               const SizedBox(height: 8),
-//                               Text(
-//                                 standort['phone']!,
-//                                 style: TextStyle(
-//                                   fontSize: 14,
-//                                   color: Colors.grey[600],
-//                                 ),
-//                               ),
-//                               const SizedBox(height: 8),
-//                               Text(
-//                                 standort['email']!,
-//                                 style: const TextStyle(
-//                                   fontSize: 14,
-//                                   color: Colors.blue,
-//                                 ),
-//                               ),
-//                               const SizedBox(height: 8),
-//                               Text(
-//                                 standort['website']!,
-//                                 style: const TextStyle(
-//                                   fontSize: 14,
-//                                   color: Colors.blue,
-//                                 ),
-//                               ),
-//                               const Spacer(),
-//                               ElevatedButton(
-//                                 onPressed: () {
-//                                   // Implement navigation or other action here
-//                                 },
-//                                 child: const Text('Standort wählen'),
-//                               ),
-//                             ],
+//         ),
+//         const SizedBox(height: 10),
+//         const Padding(
+//           padding: EdgeInsets.symmetric(horizontal: 20),
+//           child: Text(
+//             'Biz XYZ Şirketi olarak 2005 yılından beri müşterilerimize en iyi hizmeti sunmak için çalışıyoruz. Misyonumuz, yenilikçi çözümlerle müşterilerimizin beklentilerini aşmaktır. Vizyonumuz ise, alanımızda lider ve güvenilir bir marka olmaktır.Biz XYZ Şirketi olarak 2005 yılından beri müşterilerimize en iyi hizmeti sunmak için çalışıyoruz. Misyonumuz, yenilikçi çözümlerle müşterilerimizin beklentilerini aşmaktır. Vizyonumuz ise, alanımızda lider ve güvenilir bir marka olmaktır.Biz XYZ Şirketi olarak 2005 yılından beri müşterilerimize en iyi hizmeti sunmak için çalışıyoruz. Misyonumuz, yenilikçi çözümlerle müşterilerimizin beklentilerini aşmaktır. Vizyonumuz ise, alanımızda lider ve güvenilir bir marka olmaktır.Biz XYZ Şirketi olarak 2005 yılından beri müşterilerimize en iyi hizmeti sunmak için çalışıyoruz. Misyonumuz, yenilikçi çözümlerle müşterilerimizin beklentilerini aşmaktır. Vizyonumuz ise, alanımızda lider ve güvenilir bir marka olmaktır.Biz XYZ Şirketi olarak 2005 yılından beri müşterilerimize en iyi hizmeti sunmak için çalışıyoruz. Misyonumuz, yenilikçi çözümlerle müşterilerimizin beklentilerini aşmaktır. Vizyonumuz ise, alanımızda lider ve güvenilir bir marka olmaktır.',
+//             style: TextStyle(fontSize: 16),
+//           ),
+//         ),
+//         const SizedBox(height: 20),
+//         const Padding(
+//           padding: EdgeInsets.symmetric(horizontal: 20),
+//           child: Text(
+//             'Hizmetlerimiz',
+//             style: TextStyle(
+//               fontSize: 24,
+//               fontWeight: FontWeight.bold,
+//             ),
+//           ),
+//         ),
+//         const SizedBox(height: 10),
+//         Container(
+//           height: 150,
+//           padding: const EdgeInsets.symmetric(horizontal: 20),
+//           child: ListView.builder(
+//             scrollDirection: Axis.horizontal,
+//             itemCount: services.length,
+//             itemBuilder: (context, index) {
+//               return MouseRegion(
+//                 cursor: SystemMouseCursors.click,
+//                 child: GestureDetector(
+//                   onTap: () => navigateToExamPage(context),
+//                   child: Padding(
+//                     padding: const EdgeInsets.all(8.0),
+//                     child: Card(
+//                       elevation: 4,
+//                       child: SizedBox(
+//                         width: 120,
+//                         child: Center(
+//                           child: Padding(
+//                             padding: const EdgeInsets.all(8.0),
+//                             child: Text(
+//                               services[index],
+//                               textAlign: TextAlign.center,
+//                               style: const TextStyle(fontSize: 16),
+//                             ),
 //                           ),
 //                         ),
 //                       ),
-//                     );
-//                   },
-//                 ),
-//                 Positioned(
-//                   left: 0,
-//                   top: 0,
-//                   bottom: 0,
-//                   child: IconButton(
-//                     icon: const Icon(Icons.arrow_back),
-//                     onPressed: () {
-//                       _pageController?.previousPage(
-//                           duration: const Duration(milliseconds: 400),
-//                           curve: Curves.easeInOut);
-//                     },
+//                     ),
 //                   ),
 //                 ),
-//                 Positioned(
-//                   right: 0,
-//                   top: 0,
-//                   bottom: 0,
-//                   child: IconButton(
-//                     icon: const Icon(Icons.arrow_forward),
-//                     onPressed: () {
-//                       _pageController?.nextPage(
-//                           duration: const Duration(milliseconds: 400),
-//                           curve: Curves.easeInOut);
-//                     },
-//                   ),
-//                 ),
-//               ],
-//             ),
+//               );
+//             },
 //           ),
-//         ],
-//       ),
+//         ),
+//         const SizedBox(height: 10),
+//         StandorteWidget(standorte: mockStandorte),
+//       ],
 //     );
 //   }
 // }

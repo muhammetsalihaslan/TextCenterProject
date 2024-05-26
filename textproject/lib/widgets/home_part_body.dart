@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:textproject/pages/exam_page.dart';
+import 'package:textproject/widgets/services_widget.dart';
 import 'package:textproject/widgets/standorte_widget.dart';
 
 class HomePartBody extends StatefulWidget {
@@ -21,6 +22,72 @@ class _HomePartBodyState extends State<HomePartBody> {
     'Telc German 12',
     'Telc German A12',
     'Telc German A85',
+  ];
+
+  final List<Map<String, String>> mockStandorte = [
+    {
+      'title': 'Akademisches Bildungszentrum',
+      'address': 'Rummelstr. 15, 67655 Kaiserslautern',
+      'phone': '+49 631 414 53 37',
+      'email': 'info[at]a-bz.de',
+      'website': 'www.a-bz.de',
+    },
+    {
+      'title': 'Prisma Lernzentrum',
+      'address': 'Talstr. 36, 66424 Homburg',
+      'phone': '+49 6841 9937398',
+      'email': 'prisma-info[at]web.de',
+      'website': 'www.prisma-lernzentrum.de',
+    },
+    {
+      'title': 'Lernzirkel Ludwigshafen',
+      'address': 'Ludwigsplatz 9a, 67059 Ludwigshafen',
+      'phone': '+49 621 30737271',
+      'email': 'info[at]lernzirkel-online.de',
+      'website': 'https://lernzirkel-online.de/',
+    },
+    {
+      'title': 'Brüder Grimm Bildungszentrum',
+      'address': 'Langstraße 60, 63450 Hanau',
+      'phone': '+49 6181 12506',
+      'email': 'info[at]bruedergrimm.net',
+      'website': 'https://bruedergrimm.net/',
+    },
+    {
+      'title': 'Mainlingua',
+      'address': 'Zeil 41, 60313 Frankfurt am Main',
+      'phone': '+49 6971712874',
+      'email': 'info[at]mainlingua.de',
+      'website': 'https://mainlingua.de/',
+    },
+    {
+      'title': 'Akademisches Bildungs-Centrum',
+      'address': 'Rhabarunstraße 5, 55118 Mainz',
+      'phone': '+49 6131 385 147',
+      'email': 'kontakt[at]abc-mainz.de',
+      'website': 'https://www.abc-mainz.de/',
+    },
+    {
+      'title': 'Akademische Bildungsplattform',
+      'address': 'Eisenschmiede 88, 34127 Kassel',
+      'phone': '+49561 890202',
+      'email': 'info[at]abplattform.de',
+      'website': 'https://abplattform.de/',
+    },
+    {
+      'title': 'Delphin',
+      'address': 'Schwalbacher Str. 34, 65183 Wiesbaden',
+      'phone': '+49 611 3603730',
+      'email': 'info[at]delphin-ev.de',
+      'website': 'https://delphin-ev.de/',
+    },
+    {
+      'title': 'LernPoint',
+      'address': 'Bismarckstraße 2, 61169 Friedberg',
+      'phone': '+49 6031 166914',
+      'email': 'info[at]lernpoint-ev.de',
+      'website': 'https://lernpoint-ev.de/',
+    },
   ];
 
   void navigateToExamPage(BuildContext context) {
@@ -65,42 +132,12 @@ class _HomePartBodyState extends State<HomePartBody> {
           ),
         ),
         const SizedBox(height: 10),
-        Container(
-          height: 150,
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: services.length,
-            itemBuilder: (context, index) {
-              return MouseRegion(
-                cursor: SystemMouseCursors.click,
-                child: GestureDetector(
-                  onTap: () => navigateToExamPage(context),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Card(
-                      elevation: 4,
-                      child: SizedBox(
-                        width: 120,
-                        child: Center(
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              services[index],
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(fontSize: 16),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              );
-            },
-          ),
-        ),
+        ServicesWidget(services: services),
         const SizedBox(height: 10),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: StandorteWidget(standorte: mockStandorte),
+        ),
       ],
     );
   }
