@@ -14,39 +14,49 @@ class ServicesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 150,
+    // Ekran genişliğine göre crossAxisCount değerini belirleyin
+    int crossAxisCount = (services.length / 2) as int;
+    if (MediaQuery.of(context).size.width <= 800) {
+      crossAxisCount = 3;
+    }
+    if (MediaQuery.of(context).size.width <= 500) {
+      crossAxisCount = 2;
+    }
+
+    return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: services.length,
-        itemBuilder: (context, index) {
-          return MouseRegion(
-            cursor: SystemMouseCursors.click,
-            child: GestureDetector(
-              onTap: () => navigateToExamPage(context),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
+      child: SizedBox(
+        height: 400, // Boyutunu burada belirtebilirsiniz
+        child: GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: crossAxisCount,
+            mainAxisSpacing: 16,
+            crossAxisSpacing: 16,
+            childAspectRatio: 3 / 2,
+          ),
+          itemCount: services.length,
+          itemBuilder: (context, index) {
+            return MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: GestureDetector(
+                onTap: () => navigateToExamPage(context),
                 child: Card(
                   elevation: 4,
-                  child: SizedBox(
-                    width: 120,
-                    child: Center(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          services[index],
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(fontSize: 16),
-                        ),
+                  child: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        services[index],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(fontSize: 16),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

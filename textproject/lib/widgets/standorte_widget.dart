@@ -7,6 +7,15 @@ class StandorteWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Ekran genişliğine göre crossAxisCount değerini belirleyin
+    int crossAxisCount = 3;
+    if (MediaQuery.of(context).size.width <= 1040) {
+      crossAxisCount = 2;
+    }
+    if (MediaQuery.of(context).size.width <= 700) {
+      crossAxisCount = 1;
+    }
+
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -21,10 +30,10 @@ class StandorteWidget extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           SizedBox(
-            height: 600, // Boyutunu burada belirtebilirsiniz
+            height: 1000, // Boyutunu burada belirtebilirsiniz
             child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: crossAxisCount,
                 mainAxisSpacing: 16,
                 crossAxisSpacing: 16,
                 childAspectRatio: 3 / 2,
