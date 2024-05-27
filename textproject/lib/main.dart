@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:textproject/pages/home_page.dart';
 
 void main() {
@@ -14,24 +15,21 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        fontFamily: 'OpenSans', // Open Sans yazı tipi olarak ayarlanıyor
-        textTheme: const TextTheme(
-          bodyLarge: TextStyle(fontFamily: 'OpenSans'),
-          bodyMedium: TextStyle(fontFamily: 'OpenSans'),
-          bodySmall: TextStyle(fontFamily: 'OpenSans'),
-          headlineLarge: TextStyle(fontFamily: 'OpenSans'),
-          headlineMedium: TextStyle(fontFamily: 'OpenSans'),
-          headlineSmall: TextStyle(fontFamily: 'OpenSans'),
-          titleLarge: TextStyle(fontFamily: 'OpenSans'),
-          titleMedium: TextStyle(fontFamily: 'OpenSans'),
-          titleSmall: TextStyle(fontFamily: 'OpenSans'),
-          labelLarge: TextStyle(fontFamily: 'OpenSans'),
-          labelMedium: TextStyle(fontFamily: 'OpenSans'),
-          labelSmall: TextStyle(fontFamily: 'OpenSans'),
+        textTheme: GoogleFonts.robotoTextTheme().copyWith(
+          bodyLarge: GoogleFonts.roboto(fontWeight: FontWeight.w400),
+          bodyMedium: GoogleFonts.roboto(fontWeight: FontWeight.w400),
+          bodySmall: GoogleFonts.roboto(fontWeight: FontWeight.w400),
+          headlineLarge: GoogleFonts.roboto(fontWeight: FontWeight.w400),
+          headlineMedium: GoogleFonts.roboto(fontWeight: FontWeight.w400),
+          headlineSmall: GoogleFonts.roboto(fontWeight: FontWeight.w400),
+          titleLarge: GoogleFonts.roboto(fontWeight: FontWeight.w400),
+          titleMedium: GoogleFonts.roboto(fontWeight: FontWeight.w400),
+          titleSmall: GoogleFonts.roboto(fontWeight: FontWeight.w400),
+          labelLarge: GoogleFonts.roboto(fontWeight: FontWeight.w400),
+          labelMedium: GoogleFonts.roboto(fontWeight: FontWeight.w400),
+          labelSmall: GoogleFonts.roboto(fontWeight: FontWeight.w400),
         ),
-        colorScheme: ColorScheme.fromSeed(
-            seedColor: const Color(
-                0xFF003969)), // Tohum rengi olarak ana renk kullanılıyor
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF003969)),
         useMaterial3: true,
       ),
       home: const HomePage(),
