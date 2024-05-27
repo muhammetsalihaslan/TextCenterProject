@@ -51,14 +51,21 @@ class ServicesWidget extends StatelessWidget {
                   child: GestureDetector(
                     onTap: () => navigateToExamPage(context),
                     child: Card(
+                      color: const Color(0xFF003969), // Main color background
                       elevation: 4,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
                       child: Center(
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
                             services[index],
                             textAlign: TextAlign.center,
-                            style: const TextStyle(fontSize: 16),
+                            style: const TextStyle(
+                              fontSize: 16,
+                              color: Colors.white, // Secondary color text
+                            ),
                           ),
                         ),
                       ),

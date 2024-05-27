@@ -110,9 +110,9 @@ class _HomePartBodyState extends State<HomePartBody> {
           child: Text(
             'Uber Uns',
             style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF343E48)),
           ),
         ),
         const SizedBox(height: 10),
@@ -120,7 +120,7 @@ class _HomePartBodyState extends State<HomePartBody> {
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: Text(
             'Biz XYZ Şirketi olarak 2005 yılından beri müşterilerimize en iyi hizmeti sunmak için çalışıyoruz. Misyonumuz, yenilikçi çözümlerle müşterilerimizin beklentilerini aşmaktır. Vizyonumuz ise, alanımızda lider ve güvenilir bir marka olmaktır.Biz XYZ Şirketi olarak 2005 yılından beri müşterilerimize en iyi hizmeti sunmak için çalışıyoruz. Misyonumuz, yenilikçi çözümlerle müşterilerimizin beklentilerini aşmaktır. Vizyonumuz ise, alanımızda lider ve güvenilir bir marka olmaktır.Biz XYZ Şirketi olarak 2005 yılından beri müşterilerimize en iyi hizmeti sunmak için çalışıyoruz. Misyonumuz, yenilikçi çözümlerle müşterilerimizin beklentilerini aşmaktır. Vizyonumuz ise, alanımızda lider ve güvenilir bir marka olmaktır.Biz XYZ Şirketi olarak 2005 yılından beri müşterilerimize en iyi hizmeti sunmak için çalışıyoruz. Misyonumuz, yenilikçi çözümlerle müşterilerimizin beklentilerini aşmaktır. Vizyonumuz ise, alanımızda lider ve güvenilir bir marka olmaktır.Biz XYZ Şirketi olarak 2005 yılından beri müşterilerimize en iyi hizmeti sunmak için çalışıyoruz. Misyonumuz, yenilikçi çözümlerle müşterilerimizin beklentilerini aşmaktır. Vizyonumuz ise, alanımızda lider ve güvenilir bir marka olmaktır.',
-            style: TextStyle(fontSize: 16),
+            style: TextStyle(fontSize: 16, color: Color(0xFF343E48)),
           ),
         ),
         const SizedBox(height: 20),
@@ -129,9 +129,9 @@ class _HomePartBodyState extends State<HomePartBody> {
           child: Text(
             'Hizmetlerimiz',
             style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF343E48)),
           ),
         ),
         const SizedBox(height: 10),
