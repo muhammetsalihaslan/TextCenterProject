@@ -18,100 +18,104 @@ class StandorteWidget extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: LayoutBuilder(
-        builder: (context, constraints) {
-          // Calculate the number of rows required
-          final int numRows = (standorte.length / crossAxisCount).ceil();
-          // Calculate the height of each grid item
-          final double itemHeight =
-              constraints.maxWidth / crossAxisCount * (2 / 3);
-
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'Standorte',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const Text(
+            'Standorte',
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const Divider(
+            color: Color(0xFF003969), // Ana renk
+            thickness: 2,
+            indent: 16,
+            endIndent: 16,
+          ),
+          const SizedBox(height: 10),
+          GridView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(), // Disable scrolling
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: crossAxisCount,
+              mainAxisSpacing: 16,
+              crossAxisSpacing: 16,
+              childAspectRatio: 3 / 2, // Daha kısa kartlar için
+            ),
+            itemCount: standorte.length,
+            itemBuilder: (context, index) {
+              final standort = standorte[index];
+              return Card(
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  side: const BorderSide(color: Colors.transparent),
                 ),
-              ),
-              const SizedBox(height: 10),
-              SizedBox(
-                height: itemHeight * numRows +
-                    (numRows - 1) * 16, // Dynamic height based on grid items
-                child: GridView.builder(
-                  physics:
-                      const NeverScrollableScrollPhysics(), // Disable scrolling
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: crossAxisCount,
-                    mainAxisSpacing: 16,
-                    crossAxisSpacing: 16,
-                    childAspectRatio: 3 / 2,
-                  ),
-                  itemCount: standorte.length,
-                  itemBuilder: (context, index) {
-                    final standort = standorte[index];
-                    return Card(
-                      elevation: 4,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                        side: const BorderSide(color: Colors.blue, width: 1),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(16),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              standort['title']!,
-                              style: const TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const SizedBox(height: 8),
-                            Text(
-                              standort['address']!,
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.grey[600],
-                              ),
-                            ),
-                            const SizedBox(height: 8),
-                            Text(
-                              standort['phone']!,
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.grey[600],
-                              ),
-                            ),
-                            const SizedBox(height: 8),
-                            Text(
-                              standort['email']!,
-                              style: const TextStyle(
-                                fontSize: 14,
-                                color: Colors.blue,
-                              ),
-                            ),
-                            const SizedBox(height: 8),
-                            Text(
-                              standort['website']!,
-                              style: const TextStyle(
-                                fontSize: 14,
-                                color: Colors.blue,
-                              ),
-                            ),
-                          ],
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0), // Daha kompakt padding
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        standort['title']!,
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black, // Başlık rengi siyah
                         ),
                       ),
-                    );
-                  },
+                      const SizedBox(height: 4),
+                      const Divider(
+                        color: Color(0xFF003969), // Ana renk
+                        thickness: 2,
+                        indent: 16,
+                        endIndent: 16,
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        standort['address']!,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.grey[600],
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        standort['phone']!,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.grey[600],
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        standort['email']!,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          color: Color(0xFF003969), // Ana renk
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        standort['website']!,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          color: Color(0xFF003969), // Ana renk
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          );
-        },
+              );
+            },
+          ),
+        ],
       ),
     );
   }
