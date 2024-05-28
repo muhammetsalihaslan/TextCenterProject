@@ -21,7 +21,7 @@ class CustomFooter extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "PrüfungCenter",
+                "PrüfungsCenter",
                 style: TextStyle(
                   fontSize: screenCFWidth > 1000
                       ? screenCFWidth * 0.03
