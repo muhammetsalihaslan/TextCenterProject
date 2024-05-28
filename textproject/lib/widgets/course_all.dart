@@ -26,17 +26,11 @@ class CourseAllState extends State<CourseAll> {
   }
 
   Future<void> fetchFilters() async {
-    // Bu fonksiyon, Firestore'dan veri çektiğinizde kullanılacaktır.
-    // Şu anda mock veri kullanıyoruz.
     await Future.delayed(
         const Duration(seconds: 1)); // Simulating network delay
     setState(() {
       kurstitles = [
-        'Telc Deutsch A1',
-        'Telc Deutsch A2',
-        'Telc Deutsch B1',
-        'Telc Deutsch B2',
-        "Telc Deutsch C1"
+        'Telc Deutsch',
       ];
       kursorts = [
         'Frankfurt am Main',
@@ -63,8 +57,6 @@ class CourseAllState extends State<CourseAll> {
   }
 
   Future<void> fetchCourses() async {
-    // Bu fonksiyon, Firestore'dan veri çektiğinizde kullanılacaktır.
-    // Şu anda mock veri kullanıyoruz.
     await Future.delayed(
         const Duration(seconds: 1)); // Simulating network delay
     setState(() {
@@ -89,149 +81,6 @@ class CourseAllState extends State<CourseAll> {
           "Zeitraum": "am 01.06.24",
           "Freie Plätze": "10",
           "Preis": "149,00 €",
-          "Anmeldung bis": "15.05.2024"
-        },
-        {
-          "#": "PR-240601-KÖ-A2",
-          "Kurstitle": "Telc Deutsch A2",
-          "Status": "✓",
-          "Kategorie": "SP - Sprachkurse",
-          "Kursort": "Köln",
-          "Zeitraum": "am 01.06.24",
-          "Freie Plätze": "10",
-          "Preis": "159,00 €",
-          "Anmeldung bis": "15.05.2024"
-        },
-        {
-          "#": "PR-240601-KÖ-A2",
-          "Kurstitle": "Telc Deutsch A2",
-          "Status": "✓",
-          "Kategorie": "SP - Sprachkurse",
-          "Kursort": "Köln",
-          "Zeitraum": "am 01.06.24",
-          "Freie Plätze": "10",
-          "Preis": "159,00 €",
-          "Anmeldung bis": "15.05.2024"
-        },
-        {
-          "#": "PR-240601-KÖ-A2",
-          "Kurstitle": "Telc Deutsch A2",
-          "Status": "✓",
-          "Kategorie": "SP - Sprachkurse",
-          "Kursort": "Köln",
-          "Zeitraum": "am 01.06.24",
-          "Freie Plätze": "10",
-          "Preis": "159,00 €",
-          "Anmeldung bis": "15.05.2024"
-        },
-        {
-          "#": "PR-240601-KÖ-A2",
-          "Kurstitle": "Telc Deutsch A2",
-          "Status": "✓",
-          "Kategorie": "SP - Sprachkurse",
-          "Kursort": "Köln",
-          "Zeitraum": "am 01.06.24",
-          "Freie Plätze": "10",
-          "Preis": "159,00 €",
-          "Anmeldung bis": "15.05.2024"
-        },
-        {
-          "#": "PR-240601-KÖ-A2",
-          "Kurstitle": "Telc Deutsch A2",
-          "Status": "✓",
-          "Kategorie": "SP - Sprachkurse",
-          "Kursort": "Köln",
-          "Zeitraum": "am 01.06.24",
-          "Freie Plätze": "10",
-          "Preis": "159,00 €",
-          "Anmeldung bis": "15.05.2024"
-        },
-        {
-          "#": "PR-240601-KÖ-A2",
-          "Kurstitle": "Telc Deutsch A2",
-          "Status": "✓",
-          "Kategorie": "SP - Sprachkurse",
-          "Kursort": "Köln",
-          "Zeitraum": "am 01.06.24",
-          "Freie Plätze": "10",
-          "Preis": "159,00 €",
-          "Anmeldung bis": "15.05.2024"
-        },
-        {
-          "#": "PR-240601-KÖ-A2",
-          "Kurstitle": "Telc Deutsch A2",
-          "Status": "✓",
-          "Kategorie": "SP - Sprachkurse",
-          "Kursort": "Köln",
-          "Zeitraum": "am 01.06.24",
-          "Freie Plätze": "10",
-          "Preis": "159,00 €",
-          "Anmeldung bis": "15.05.2024"
-        },
-        {
-          "#": "PR-240601-KÖ-A2",
-          "Kurstitle": "Telc Deutsch A2",
-          "Status": "✓",
-          "Kategorie": "SP - Sprachkurse",
-          "Kursort": "Köln",
-          "Zeitraum": "am 01.06.24",
-          "Freie Plätze": "10",
-          "Preis": "159,00 €",
-          "Anmeldung bis": "15.05.2024"
-        },
-        {
-          "#": "PR-240601-KÖ-A2",
-          "Kurstitle": "Telc Deutsch A2",
-          "Status": "✓",
-          "Kategorie": "SP - Sprachkurse",
-          "Kursort": "Köln",
-          "Zeitraum": "am 01.06.24",
-          "Freie Plätze": "10",
-          "Preis": "159,00 €",
-          "Anmeldung bis": "15.05.2024"
-        },
-        {
-          "#": "PR-240601-KÖ-A2",
-          "Kurstitle": "Telc Deutsch A2",
-          "Status": "✓",
-          "Kategorie": "SP - Sprachkurse",
-          "Kursort": "Köln",
-          "Zeitraum": "am 01.06.24",
-          "Freie Plätze": "10",
-          "Preis": "159,00 €",
-          "Anmeldung bis": "15.05.2024"
-        },
-        {
-          "#": "PR-240601-KÖ-A2",
-          "Kurstitle": "Telc Deutsch A2",
-          "Status": "✓",
-          "Kategorie": "SP - Sprachkurse",
-          "Kursort": "Köln",
-          "Zeitraum": "am 01.06.24",
-          "Freie Plätze": "10",
-          "Preis": "159,00 €",
-          "Anmeldung bis": "15.05.2024"
-        },
-        {
-          "#": "PR-240601-KÖ-A2",
-          "Kurstitle": "Telc Deutsch A2",
-          "Status": "✓",
-          "Kategorie": "SP - Sprachkurse",
-          "Kursort": "Köln",
-          "Zeitraum": "am 01.06.24",
-          "Freie Plätze": "10",
-          "Preis": "159,00 €",
-          "Anmeldung bis": "15.05.2024"
-        },
-        {
-          "#": "PR-240601-KÖ-A2",
-          "Kurstitle": "Telc Deutsch A2",
-          "Status": "✓",
-          "Kategorie": "SP - Sprachkurse",
-          "Kursort": "Köln",
-          "Zeitraum": "am 01.06.24",
-          "Freie Plätze": "10",
-          "Preis": "159,00 €",
           "Anmeldung bis": "15.05.2024"
         },
       ];
@@ -268,20 +117,30 @@ class CourseAllState extends State<CourseAll> {
   Widget build(BuildContext context) {
     return isLoading
         ? const Center(child: CircularProgressIndicator())
-        : SizedBox(
-            height: 1200,
-            child: Column(
-              children: [
-                SearchFilter(
-                  kurstitles: kurstitles,
-                  kursorts: kursorts,
-                  kategorien: kategorien,
-                  sprachniveaus: sprachniveaus,
-                  onFilterChanged: onFilterChanged,
+        : LayoutBuilder(
+            builder: (context, constraints) {
+              final double itemHeight = constraints.maxWidth / 2 * (2 / 3);
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    SearchFilter(
+                      kurstitles: kurstitles,
+                      kursorts: kursorts,
+                      kategorien: kategorien,
+                      sprachniveaus: sprachniveaus,
+                      onFilterChanged: onFilterChanged,
+                    ),
+                    SizedBox(
+                      height: itemHeight,
+                      child: Expanded(
+                        child: CourseList(courses: filteredCourses),
+                      ),
+                    ),
+                  ],
                 ),
-                Expanded(child: CourseList(courses: filteredCourses)),
-              ],
-            ),
+              );
+            },
           );
   }
 }

@@ -31,7 +31,7 @@ class _SearchFilterState extends State<SearchFilter> {
     return Center(
       child: Container(
         width: containerWidth,
-        color: Colors.lightBlueAccent,
+        color: const Color(0xFF003969),
         padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,13 +42,18 @@ class _SearchFilterState extends State<SearchFilter> {
                 SizedBox(width: 8),
                 Text(
                   "Suchfilter",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
                 ),
               ],
             ),
             const SizedBox(height: 8),
             const Text(
               'Nutzen Sie die Suchfilter, um bestimmte Kurse schneller und einfacher zu finden.',
+              style: TextStyle(color: Colors.white),
             ),
             const SizedBox(height: 16),
             screenWidth > 800
@@ -106,14 +111,17 @@ class _SearchFilterState extends State<SearchFilter> {
                     });
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
+                    backgroundColor: Colors.white,
                     shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.zero,
                     ),
                   ),
                   child: const Text(
                     "Kurse finden",
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(
+                        color: Color(0xFF343E48),
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
@@ -128,12 +136,21 @@ class _SearchFilterState extends State<SearchFilter> {
     return DropdownButtonFormField<String>(
       decoration: InputDecoration(
         labelText: label,
-        border: const OutlineInputBorder(),
+        labelStyle: const TextStyle(color: Color(0xFF343E48)),
+        filled: true,
+        fillColor: Colors.white,
+        floatingLabelStyle: const TextStyle(
+            color: Color(0xFFA6B0BA),
+            fontSize: 20,
+            fontWeight: FontWeight.bold),
+        border: const OutlineInputBorder(
+          borderSide: BorderSide(color: Color(0xFF343E48)),
+        ),
       ),
       items: items.map((String value) {
         return DropdownMenuItem<String>(
           value: value,
-          child: Text(value),
+          child: Text(value, style: const TextStyle(color: Color(0xFF343E48))),
         );
       }).toList(),
       onChanged: (value) {
@@ -154,7 +171,8 @@ class _SearchFilterState extends State<SearchFilter> {
           }
         });
       },
-      dropdownColor: Colors.lightBlueAccent,
+      dropdownColor: Colors.white,
+      iconEnabledColor: const Color(0xFF343E48),
       isExpanded: true,
     );
   }
