@@ -31,6 +31,10 @@ class CourseAllState extends State<CourseAll> {
     setState(() {
       kurstitles = [
         'Telc Deutsch',
+        'Telc English',
+        'Telc Turkish',
+        'Telc French',
+        'Telc Arabic',
       ];
       kursorts = [
         'Frankfurt am Main',
@@ -63,7 +67,7 @@ class CourseAllState extends State<CourseAll> {
       courses = [
         {
           "#": "PR-240526-KS-C1A",
-          "Kurstitle": "Telc Deutsch B1 - Allgemein",
+          "Kurstitle": "Telc Deutsch",
           "Status": "✓",
           "Kategorie": "PR - Prüfungen",
           "Kursort": "Kassel",
@@ -92,9 +96,9 @@ class CourseAllState extends State<CourseAll> {
   void onFilterChanged(Map<String, String?> filter) {
     setState(() {
       filteredCourses = courses.where((course) {
-        final kurstitleMatch = filter['Kurstitle'] == null ||
-            filter['Kurstitle']!.isEmpty ||
-            course['Kurstitle'].contains(filter['Kurstitle']!);
+        final kurstitleMatch = filter['Kurstitel'] == null ||
+            filter['Kurstitel']!.isEmpty ||
+            course['Kurstitel'].contains(filter['Kurstitel']!);
         final kursortMatch = filter['Kursort'] == null ||
             filter['Kursort']!.isEmpty ||
             course['Kursort'] == filter['Kursort'];

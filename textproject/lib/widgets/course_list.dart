@@ -51,8 +51,8 @@ class CourseListState extends State<CourseList> {
                     scrollDirection: Axis.horizontal,
                     child: DataTable(
                       columns: const [
-                        DataColumn(label: Text('#')),
-                        DataColumn(label: Text('Kurstitle')),
+                        DataColumn(label: Text('KursID')),
+                        DataColumn(label: Text('Kurstitel')),
                         DataColumn(label: Text('Status')),
                         DataColumn(label: Text('Kategorie')),
                         DataColumn(label: Text('Kursort')),
@@ -66,7 +66,7 @@ class CourseListState extends State<CourseList> {
                         return DataRow(
                           cells: [
                             DataCell(Text(course['#'] ?? '')),
-                            DataCell(Text(course['Kurstitle'] ?? '')),
+                            DataCell(Text(course['Kurstitel'] ?? '')),
                             DataCell(Text(course['Status'] ?? '')),
                             DataCell(Text(course['Kategorie'] ?? '')),
                             DataCell(Text(course['Kursort'] ?? '')),
@@ -108,7 +108,7 @@ class CourseListState extends State<CourseList> {
                                   style: const TextStyle(
                                       fontWeight: FontWeight.bold)),
                               const SizedBox(height: 8.0),
-                              Text(course['Kurstitle'] ?? '',
+                              Text(course['Kurstitel'] ?? '',
                                   style: const TextStyle(
                                       fontSize: 18.0, color: Colors.blue)),
                               const SizedBox(height: 8.0),
