@@ -45,7 +45,7 @@ class CourseAllState extends State<CourseAll> {
         'Mainz',
         'Weisbaden'
       ];
-      kategorien = ['PR - Prüfungen', "SP - Sprachkurse"];
+      kategorien = ['PR-Prüfungen', "SP-Sprachkurse"];
       sprachniveaus = [
         'A1',
         'A2',
@@ -66,10 +66,11 @@ class CourseAllState extends State<CourseAll> {
     setState(() {
       courses = [
         {
-          "#": "PR-240526-KS-C1A",
-          "Kurstitle": "Telc Deutsch",
+          "KursID": "PR-240526-KS-C1A",
+          "Kurstitel": "Telc Deutsch",
+          "Sprachniveau": "A1",
           "Status": "✓",
-          "Kategorie": "PR - Prüfungen",
+          "Kategorie": "PR-Prüfungen",
           "Kursort": "Kassel",
           "Zeitraum": "am 26.05.24",
           "Freie Plätze": "8",
@@ -77,11 +78,36 @@ class CourseAllState extends State<CourseAll> {
           "Anmeldung bis": "09.05.2024"
         },
         {
-          "#": "PR-240601-KÖ-A1Z",
-          "Kurstitle": "Telc Deutsch A1",
+          "KursID": "PR-240601-KÖ-A1Z",
+          "Kurstitel": "Telc English",
+          "Sprachniveau": "A2",
           "Status": "✓",
-          "Kategorie": "PR - Prüfungen",
+          "Kategorie": "PR-Prüfungen",
           "Kursort": "Köln",
+          "Zeitraum": "am 01.06.24",
+          "Freie Plätze": "10",
+          "Preis": "149,00 €",
+          "Anmeldung bis": "15.05.2024"
+        },
+        {
+          "KursID": "PR-240601-KÖ-A1Z",
+          "Kurstitel": "Telc English",
+          "Sprachniveau": "A2-B1",
+          "Status": "✓",
+          "Kategorie": "SP-Sprachkurse",
+          "Kursort": 'Frankfurt am Main',
+          "Zeitraum": "am 01.06.24",
+          "Freie Plätze": "10",
+          "Preis": "149,00 €",
+          "Anmeldung bis": "15.05.2024"
+        },
+        {
+          "KursID": "PR-240601-KÖ-A1Z",
+          "Kurstitel": "Telc Arabic",
+          "Sprachniveau": "C1",
+          "Status": "✓",
+          "Kategorie": "SP-Sprachkurse",
+          "Kursort": 'Frankfurt am Main',
           "Zeitraum": "am 01.06.24",
           "Freie Plätze": "10",
           "Preis": "149,00 €",

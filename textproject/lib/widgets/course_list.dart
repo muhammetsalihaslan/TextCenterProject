@@ -50,30 +50,34 @@ class CourseListState extends State<CourseList> {
                   return SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: DataTable(
+                      columnSpacing: 20.0,
+                      dataRowMinHeight: 45.0,
                       columns: const [
                         DataColumn(label: Text('KursID')),
                         DataColumn(label: Text('Kurstitel')),
-                        DataColumn(label: Text('Status')),
+                        DataColumn(label: Text('Sprachniveau')),
                         DataColumn(label: Text('Kategorie')),
                         DataColumn(label: Text('Kursort')),
-                        DataColumn(label: Text('Zeitraum')),
+                        DataColumn(label: Text('Status')),
                         DataColumn(label: Text('Freie Plätze')),
-                        DataColumn(label: Text('Preis')),
+                        DataColumn(label: Text('Zeitraum')),
                         DataColumn(label: Text('Anmeldung bis')),
+                        DataColumn(label: Text('Preis')),
                         DataColumn(label: Text('Details')),
                       ],
                       rows: paginatedCourses.map((course) {
                         return DataRow(
                           cells: [
-                            DataCell(Text(course['#'] ?? '')),
+                            DataCell(Text(course['KursID'] ?? '')),
                             DataCell(Text(course['Kurstitel'] ?? '')),
-                            DataCell(Text(course['Status'] ?? '')),
+                            DataCell(Text(course['Sprachniveau'] ?? '')),
                             DataCell(Text(course['Kategorie'] ?? '')),
                             DataCell(Text(course['Kursort'] ?? '')),
-                            DataCell(Text(course['Zeitraum'] ?? '')),
+                            DataCell(Text(course['Status'] ?? '')),
                             DataCell(Text(course['Freie Plätze'] ?? '')),
-                            DataCell(Text(course['Preis'] ?? '')),
+                            DataCell(Text(course['Zeitraum'] ?? '')),
                             DataCell(Text(course['Anmeldung bis'] ?? '')),
+                            DataCell(Text(course['Preis'] ?? '')),
                             DataCell(ElevatedButton(
                               onPressed: () {
                                 Navigator.push(

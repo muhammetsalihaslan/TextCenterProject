@@ -65,14 +65,15 @@ class _SearchFilterState extends State<SearchFilter> {
                               _buildDropdown('Kurstitel', widget.kurstitles)),
                       const SizedBox(width: 16),
                       Expanded(
-                          child: _buildDropdown("Kategorie", widget.kursorts)),
+                          child:
+                              _buildDropdown("Kategorie", widget.kategorien)),
                     ],
                   )
                 : Column(
                     children: [
                       _buildDropdown('Kurstitel', widget.kurstitles),
                       const SizedBox(height: 16),
-                      _buildDropdown('Kategorie', widget.kursorts),
+                      _buildDropdown('Kategorie', widget.kategorien),
                     ],
                   ),
             const SizedBox(height: 16),
@@ -82,18 +83,17 @@ class _SearchFilterState extends State<SearchFilter> {
                     children: [
                       Expanded(
                           child: _buildDropdown(
-                              'Sprachniveau', widget.kategorien)),
+                              'Sprachniveau', widget.sprachniveaus)),
                       const SizedBox(width: 16),
                       Expanded(
-                          child:
-                              _buildDropdown('Kursort', widget.sprachniveaus)),
+                          child: _buildDropdown('Kursort', widget.kursorts)),
                     ],
                   )
                 : Column(
                     children: [
-                      _buildDropdown('Sprachniveau', widget.kategorien),
+                      _buildDropdown('Sprachniveau', widget.sprachniveaus),
                       const SizedBox(height: 16),
-                      _buildDropdown('Kursort', widget.sprachniveaus),
+                      _buildDropdown('Kursort', widget.kursorts),
                     ],
                   ),
             const SizedBox(height: 16),

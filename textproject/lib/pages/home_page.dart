@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
         },
         backgroundColor: Colors.blue,
         child: const CircleAvatar(
-          radius: 28, // Radius to make the image fit perfectly inside the FAB
+          radius: 50, // Radius to make the image fit perfectly inside the FAB
           backgroundImage: AssetImage("assets/logo/pfIcon.png"),
           backgroundColor:
               Colors.transparent, // Makes sure the background is transparent
