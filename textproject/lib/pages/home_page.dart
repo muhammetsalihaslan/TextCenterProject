@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:textproject/pages/exam_page.dart';
 import 'package:textproject/widgets/custom_appbar.dart';
 import 'package:textproject/widgets/custom_drawer.dart';
 import 'package:textproject/widgets/custom_footer.dart';
@@ -24,6 +25,22 @@ class HomePage extends StatelessWidget {
           CustomFooter(),
         ],
       )),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const ExamChoosePage()),
+          );
+        },
+        backgroundColor: Colors.blue,
+        child: const CircleAvatar(
+          radius: 28, // Radius to make the image fit perfectly inside the FAB
+          backgroundImage: AssetImage("assets/logo/pfIcon.png"),
+          backgroundColor:
+              Colors.transparent, // Makes sure the background is transparent
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 }
