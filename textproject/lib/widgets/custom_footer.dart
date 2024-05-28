@@ -5,95 +5,175 @@ class CustomFooter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Ekran genişliğini ve yüksekliğini almak için MediaQuery kullanın
+    double screenCFWidth = MediaQuery.of(context).size.width;
+    double screenCFHeight = MediaQuery.of(context).size.height;
+
     return Container(
       color: const Color(0xFF003969), // Arka plan rengi
-      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
+      padding: EdgeInsets.symmetric(
+          vertical: screenCFHeight * 0.02, horizontal: screenCFWidth * 0.01),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "PrüfungCenter",
                 style: TextStyle(
-                  fontSize: 50,
+                  fontSize: screenCFWidth *
+                      0.03, // Ekran genişliğine göre dinamik yazı boyutu
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFFA6B0BA),
+                  color: const Color(0xFFA6B0BA),
                 ),
               ),
-              Row(children: [
-                Text(
-                  'eine Marke des ',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.grey[300],
-                  ),
-                ),
-                GestureDetector(
-                  onTap: _onLinkTap,
-                  child: const Text(
-                    'Avicenna Institut e. V.',
+              Row(
+                children: [
+                  Text(
+                    'eine Marke des ',
                     style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.lightBlueAccent,
+                      fontSize: screenCFWidth *
+                          0.01, // Ekran genişliğine göre dinamik yazı boyutu
+                      color: const Color(0xFFA6B0BA),
                     ),
                   ),
-                ),
-              ])
-            ],
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              GestureDetector(
-                onTap: _onLinkTap,
-                child: const Text(
-                  'IMPRESSUM',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.lightBlueAccent,
+                  GestureDetector(
+                    onTap: _onLinkTap,
+                    child: Text(
+                      'Avicenna Institut e. V.',
+                      style: TextStyle(
+                        fontSize: screenCFWidth *
+                            0.01, // Ekran genişliğine göre dinamik yazı boyutu
+                        color: Colors.lightBlueAccent,
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              GestureDetector(
-                onTap: _onLinkTap,
-                child: const Text(
-                  'DATENSCHUNTZ',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.lightBlueAccent,
-                  ),
-                ),
-              ),
-              GestureDetector(
-                onTap: _onLinkTap,
-                child: const Text(
-                  'Allgemeine Geschäftsbedingungen',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.lightBlueAccent,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Column(
-            children: [
-              Image.asset(
-                'assets/paytype/alltype.png',
-                width: 100,
-                height: 100,
-                fit: BoxFit.contain,
+                ],
               ),
               const SizedBox(height: 8),
-              Image.asset(
-                'assets/paytype/sofort.png',
-                width: 50,
-                height: 50,
-                fit: BoxFit.contain,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  GestureDetector(
+                    onTap: _onLinkTap,
+                    child: Text(
+                      'IMPRESSUM',
+                      style: TextStyle(
+                        fontSize: screenCFWidth *
+                            0.01, // Ekran genişliğine göre dinamik yazı boyutu
+                        color: Colors.lightBlueAccent,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: _onLinkTap,
+                    child: Text(
+                      'DATENSCHUNTZ',
+                      style: TextStyle(
+                        fontSize: screenCFWidth *
+                            0.0, // Ekran genişliğine göre dinamik yazı boyutu
+                        color: Colors.lightBlueAccent,
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: _onLinkTap,
+                    child: Text(
+                      'Allgemeine Geschäftsbedingungen',
+                      style: TextStyle(
+                        fontSize: screenCFWidth *
+                            0.01, // Ekran genişliğine göre dinamik yazı boyutu
+                        color: Colors.lightBlueAccent,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: screenCFHeight * 0.1),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Row(
+                  children: [
+                    Icon(Icons.phone,
+                        color: Colors.lightBlueAccent,
+                        size: screenCFWidth * 0.01),
+                    const SizedBox(width: 8),
+                    Text(
+                      '+90 555 555 55 55',
+                      style: TextStyle(
+                        fontSize: screenCFWidth *
+                            0.01, // Ekran genişliğine göre dinamik yazı boyutu
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 10), // Bilgiler arasına boşluk ekleyin
+                Row(
+                  children: [
+                    Icon(Icons.email,
+                        color: Colors.lightBlueAccent,
+                        size: screenCFWidth * 0.01),
+                    const SizedBox(width: 8),
+                    Text(
+                      'info@example.com',
+                      style: TextStyle(
+                        fontSize: screenCFWidth *
+                            0.01, // Ekran genişliğine göre dinamik yazı boyutu
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 10), // Bilgiler arasına boşluk ekleyin
+                Row(
+                  children: [
+                    Icon(Icons.location_on,
+                        color: Colors.lightBlueAccent,
+                        size: screenCFWidth * 0.01),
+                    const SizedBox(width: 8),
+                    Text(
+                      '1234 Example St, City, Country',
+                      style: TextStyle(
+                        fontSize: screenCFWidth *
+                            0.01, // Ekran genişliğine göre dinamik yazı boyutu
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 90),
+            child: Column(
+              children: [
+                Image.asset(
+                  'assets/paytype/alltype.png',
+                  width: screenCFWidth *
+                      0.01, // Ekran genişliğine göre dinamik boyut
+                  height: screenCFHeight *
+                      0.01, // Ekran genişliğine göre dinamik boyut
+                  fit: BoxFit.contain,
+                ),
+                const SizedBox(height: 8),
+                Image.asset(
+                  'assets/paytype/sofort.png',
+                  width: screenCFWidth *
+                      0.02, // Ekran genişliğine göre dinamik boyut
+                  height: screenCFWidth *
+                      0.03, // Ekran genişliğine göre dinamik boyut
+                  fit: BoxFit.contain,
+                ),
+              ],
+            ),
           )
         ],
       ),
