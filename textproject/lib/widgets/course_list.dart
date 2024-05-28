@@ -52,32 +52,32 @@ class CourseListState extends State<CourseList> {
                     child: DataTable(
                       columnSpacing: 20.0,
                       dataRowMinHeight: 45.0,
-                      columns: const [
-                        DataColumn(label: Text('KursID')),
-                        DataColumn(label: Text('Kurstitel')),
-                        DataColumn(label: Text('Sprachniveau')),
-                        DataColumn(label: Text('Kategorie')),
-                        DataColumn(label: Text('Kursort')),
-                        DataColumn(label: Text('Status')),
-                        DataColumn(label: Text('Freie Plätze')),
-                        DataColumn(label: Text('Zeitraum')),
-                        DataColumn(label: Text('Anmeldung bis')),
-                        DataColumn(label: Text('Preis')),
-                        DataColumn(label: Text('Details')),
+                      columns: [
+                        DataColumn(label: buildTextColumn('KursID')),
+                        DataColumn(label: buildTextColumn('Kurstitel')),
+                        DataColumn(label: buildTextColumn('Sprachniveau')),
+                        DataColumn(label: buildTextColumn('Kategorie')),
+                        DataColumn(label: buildTextColumn('Kursort')),
+                        DataColumn(label: buildTextColumn('Status')),
+                        DataColumn(label: buildTextColumn('Freie Plätze')),
+                        DataColumn(label: buildTextColumn('Zeitraum')),
+                        DataColumn(label: buildTextColumn('Anmeldung bis')),
+                        DataColumn(label: buildTextColumn('Preis')),
+                        DataColumn(label: buildTextColumn('Details')),
                       ],
                       rows: paginatedCourses.map((course) {
                         return DataRow(
                           cells: [
-                            DataCell(Text(course['KursID'] ?? '')),
-                            DataCell(Text(course['Kurstitel'] ?? '')),
-                            DataCell(Text(course['Sprachniveau'] ?? '')),
-                            DataCell(Text(course['Kategorie'] ?? '')),
-                            DataCell(Text(course['Kursort'] ?? '')),
-                            DataCell(Text(course['Status'] ?? '')),
-                            DataCell(Text(course['Freie Plätze'] ?? '')),
-                            DataCell(Text(course['Zeitraum'] ?? '')),
-                            DataCell(Text(course['Anmeldung bis'] ?? '')),
-                            DataCell(Text(course['Preis'] ?? '')),
+                            DataCell(buildTextCell(course['KursID'])),
+                            DataCell(buildTextCell(course['Kurstitel'])),
+                            DataCell(buildTextCell(course['Sprachniveau'])),
+                            DataCell(buildTextCell(course['Kategorie'])),
+                            DataCell(buildTextCell(course['Kursort'])),
+                            DataCell(buildTextCell(course['Status'])),
+                            DataCell(buildTextCell(course['Freie Plätze'])),
+                            DataCell(buildTextCell(course['Zeitraum'])),
+                            DataCell(buildTextCell(course['Anmeldung bis'])),
+                            DataCell(buildTextCell(course['Preis'])),
                             DataCell(ElevatedButton(
                               onPressed: () {
                                 Navigator.push(
@@ -161,6 +161,26 @@ class CourseListState extends State<CourseList> {
             ],
           ),
         ],
+      ),
+    );
+  }
+
+  Widget buildTextColumn(String text) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10.0),
+      child: Text(
+        text,
+        style: const TextStyle(fontSize: 14.0),
+      ),
+    );
+  }
+
+  Widget buildTextCell(String text) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10.0),
+      child: Text(
+        text,
+        style: const TextStyle(fontSize: 14.0),
       ),
     );
   }
