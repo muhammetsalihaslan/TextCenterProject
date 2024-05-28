@@ -50,7 +50,7 @@ class CourseListState extends State<CourseList> {
                   return SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: DataTable(
-                      columnSpacing: 20.0,
+                      columnSpacing: 25.0,
                       dataRowMinHeight: 45.0,
                       columns: [
                         DataColumn(label: buildTextColumn('KursID')),
@@ -166,18 +166,20 @@ class CourseListState extends State<CourseList> {
   }
 
   Widget buildTextColumn(String text) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10.0),
+    return Center(
       child: Text(
         text,
-        style: const TextStyle(fontSize: 14.0),
+        style: const TextStyle(
+            fontSize: 14.0,
+            color: Color(0xFF003969),
+            fontWeight: FontWeight.bold),
       ),
     );
   }
 
   Widget buildTextCell(String text) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10.0),
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Text(
         text,
         style: const TextStyle(fontSize: 14.0),
