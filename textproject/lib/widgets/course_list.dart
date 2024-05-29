@@ -37,6 +37,14 @@ class CourseListState extends State<CourseList> {
     });
   }
 
+  String truncateKursID(String kursID) {
+    if (kursID.length > 5) {
+      return '${kursID.substring(0, 5)}...';
+    } else {
+      return kursID;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return IntrinsicHeight(
@@ -68,7 +76,8 @@ class CourseListState extends State<CourseList> {
                       rows: paginatedCourses.map((course) {
                         return DataRow(
                           cells: [
-                            DataCell(buildTextCell(course['KursID'])),
+                            DataCell(buildTextCell(
+                                truncateKursID(course['KursID']))),
                             DataCell(buildTextCell(course['Kurstitel'])),
                             DataCell(buildTextCell(course['Sprachniveau'])),
                             DataCell(buildTextCell(course['Kategorie'])),
