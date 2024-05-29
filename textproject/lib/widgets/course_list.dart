@@ -5,7 +5,10 @@ import 'package:textproject/pages/course_detail_page.dart';
 class CourseList extends StatefulWidget {
   final List<Map<String, dynamic>> courses;
 
-  const CourseList({required this.courses, super.key});
+  const CourseList({
+    required this.courses,
+    super.key,
+  });
 
   @override
   CourseListState createState() => CourseListState();
