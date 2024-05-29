@@ -67,7 +67,7 @@ class CourseAllState extends State<CourseAll> {
       courses = [
         {
           "KursID": "PR-240526-KS-C1A",
-          "Kurstitel": "Telc Deutsch",
+          "Kurstitel": "Telc Deutsch for immigrant first step",
           "Sprachniveau": "A1",
           "Status": "✓",
           "Kategorie": "PR-Prüfungen",
@@ -97,9 +97,9 @@ class CourseAllState extends State<CourseAll> {
           "Kategorie": "SP-Sprachkurse",
           "Kursort": 'Frankfurt am Main',
           "Zeitraum": "am 01.06.24",
-          "Freie Plätze": "10",
+          "Freie Plätze": "0",
           "Preis": "149,00 €",
-          "Anmeldung bis": "15.05.2024"
+          "Anmeldung bis": "15.06.2024"
         },
         {
           "KursID": "PR-240601-KÖ-A1Z",
@@ -109,9 +109,9 @@ class CourseAllState extends State<CourseAll> {
           "Kategorie": "SP-Sprachkurse",
           "Kursort": 'Frankfurt am Main',
           "Zeitraum": "am 01.06.24",
-          "Freie Plätze": "10",
+          "Freie Plätze": 2,
           "Preis": "149,00 €",
-          "Anmeldung bis": "15.05.2024"
+          "Anmeldung bis": '15.06.2024'
         },
       ];
       filteredCourses = List.from(courses); // Initially, show all courses

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:textproject/pages/course_detail_page.dart';
 
 class CourseList extends StatefulWidget {
@@ -13,6 +14,7 @@ class CourseList extends StatefulWidget {
 class CourseListState extends State<CourseList> {
   int currentPage = 0;
   static const int itemsPerPage = 10;
+  final DateFormat dateFormat = DateFormat('dd.MM.yyyy');
 
   List<Map<String, dynamic>> get paginatedCourses {
     int start = currentPage * itemsPerPage;
@@ -37,12 +39,36 @@ class CourseListState extends State<CourseList> {
     });
   }
 
-  String truncateKursID(String kursID) {
-    if (kursID.length > 5) {
-      return '${kursID.substring(0, 5)}...';
+  String truncateText(String text, int maxLength) {
+    if (text.length > maxLength) {
+      return '${text.substring(0, maxLength)}...';
     } else {
-      return kursID;
+      return text;
     }
+  }
+
+  bool isApplicationDeadlinePassed(String applicationDeadline) {
+    try {
+      final deadline = dateFormat.parse(applicationDeadline);
+      return DateTime.now().isAfter(deadline);
+    } catch (e) {
+      return false;
+    }
+  }
+
+  Color getFreiePlaetzeColor(int freiePlaetze) {
+    if (freiePlaetze == 0) {
+      return Colors.red;
+    } else if (freiePlaetze < 5) {
+      return Colors.yellow;
+    } else {
+      return Colors.green;
+    }
+  }
+
+  Icon getFreiePlaetzeIcon(int freiePlaetze) {
+    Color color = getFreiePlaetzeColor(freiePlaetze);
+    return Icon(Icons.person, color: color);
   }
 
   @override
@@ -74,20 +100,44 @@ class CourseListState extends State<CourseList> {
                         DataColumn(label: buildTextColumn('Details')),
                       ],
                       rows: paginatedCourses.map((course) {
+                        bool isDeadlinePassed = isApplicationDeadlinePassed(
+                            course['Anmeldung bis']);
+                        int freiePlaetze =
+                            int.tryParse(course['Freie Plätze'].toString()) ??
+                                0;
+                        bool shouldShowCloseIcon =
+                            isDeadlinePassed || freiePlaetze == 0;
+
                         return DataRow(
                           cells: [
-                            DataCell(buildTextCell(
-                                truncateKursID(course['KursID']))),
-                            DataCell(buildTextCell(course['Kurstitel'])),
-                            DataCell(buildTextCell(course['Sprachniveau'])),
-                            DataCell(buildTextCell(course['Kategorie'])),
-                            DataCell(buildTextCell(course['Kursort'])),
-                            DataCell(buildTextCell(course['Status'])),
-                            DataCell(buildTextCell(course['Freie Plätze'])),
-                            DataCell(buildTextCell(course['Zeitraum'])),
-                            DataCell(buildTextCell(course['Anmeldung bis'])),
-                            DataCell(buildTextCell(course['Preis'])),
+                            DataCell(buildDataCell(course['KursID'], 10)),
+                            DataCell(buildDataCell(course['Kurstitel'], 12)),
+                            DataCell(buildDataCell(course['Sprachniveau'], 5)),
+                            DataCell(buildDataCell(course['Kategorie'], 12)),
+                            DataCell(buildDataCell(course['Kursort'], 18)),
+                            DataCell(
+                              Icon(
+                                shouldShowCloseIcon ? Icons.close : Icons.check,
+                                color: shouldShowCloseIcon
+                                    ? Colors.red
+                                    : Colors.green,
+                              ),
+                            ),
+                            DataCell(Row(
+                              children: [
+                                getFreiePlaetzeIcon(freiePlaetze),
+                                const SizedBox(width: 5),
+                                buildDataCell(freiePlaetze.toString(), 5),
+                              ],
+                            )),
+                            DataCell(buildDataCell(course['Zeitraum'], 12)),
+                            DataCell(
+                                buildDataCell(course['Anmeldung bis'], 12)),
+                            DataCell(buildDataCell('${course['Preis']} ', 10)),
                             DataCell(ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: const Color(0xFF003969),
+                              ),
                               onPressed: () {
                                 Navigator.push(
                                   context,
@@ -97,7 +147,10 @@ class CourseListState extends State<CourseList> {
                                   ),
                                 );
                               },
-                              child: const Text('Details'),
+                              child: const Text(
+                                'Details',
+                                style: TextStyle(color: Colors.white),
+                              ),
                             )),
                           ],
                         );
@@ -186,11 +239,12 @@ class CourseListState extends State<CourseList> {
     );
   }
 
-  Widget buildTextCell(String text) {
+  Widget buildDataCell(String data, int maxLength) {
+    String truncatedData = truncateText(data, maxLength);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Text(
-        text,
+        truncatedData,
         style: const TextStyle(fontSize: 14.0),
       ),
     );
