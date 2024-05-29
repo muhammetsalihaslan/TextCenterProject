@@ -113,6 +113,90 @@ class CourseAllState extends State<CourseAll> {
           "Preis": "149,00 €",
           "Anmeldung bis": '15.06.2024'
         },
+        {
+          "KursID": "PR-240601-KÖ-A1Z",
+          "Kurstitel": "Telc Arabic",
+          "Sprachniveau": "C1",
+          "Status": "✓",
+          "Kategorie": "SP-Sprachkurse",
+          "Kursort": 'Frankfurt am Main',
+          "Zeitraum": "am 01.06.24",
+          "Freie Plätze": 2,
+          "Preis": "149,00 €",
+          "Anmeldung bis": '15.06.2024'
+        },
+        {
+          "KursID": "PR-240601-KÖ-A1Z",
+          "Kurstitel": "Telc Arabic",
+          "Sprachniveau": "C1",
+          "Status": "✓",
+          "Kategorie": "SP-Sprachkurse",
+          "Kursort": 'Frankfurt am Main',
+          "Zeitraum": "am 01.06.24",
+          "Freie Plätze": 2,
+          "Preis": "149,00 €",
+          "Anmeldung bis": '15.06.2024'
+        },
+        {
+          "KursID": "PR-240601-KÖ-A1Z",
+          "Kurstitel": "Telc Arabic",
+          "Sprachniveau": "C1",
+          "Status": "✓",
+          "Kategorie": "SP-Sprachkurse",
+          "Kursort": 'Frankfurt am Main',
+          "Zeitraum": "am 01.06.24",
+          "Freie Plätze": 2,
+          "Preis": "149,00 €",
+          "Anmeldung bis": '15.06.2024'
+        },
+        {
+          "KursID": "PR-240601-KÖ-A1Z",
+          "Kurstitel": "Telc Arabic",
+          "Sprachniveau": "C1",
+          "Status": "✓",
+          "Kategorie": "SP-Sprachkurse",
+          "Kursort": 'Frankfurt am Main',
+          "Zeitraum": "am 01.06.24",
+          "Freie Plätze": 2,
+          "Preis": "149,00 €",
+          "Anmeldung bis": '15.06.2024'
+        },
+        {
+          "KursID": "PR-240601-KÖ-A1Z",
+          "Kurstitel": "Telc Arabic",
+          "Sprachniveau": "C1",
+          "Status": "✓",
+          "Kategorie": "SP-Sprachkurse",
+          "Kursort": 'Frankfurt am Main',
+          "Zeitraum": "am 01.06.24",
+          "Freie Plätze": 2,
+          "Preis": "149,00 €",
+          "Anmeldung bis": '15.06.2024'
+        },
+        {
+          "KursID": "PR-240601-KÖ-A1Z",
+          "Kurstitel": "Telc Arabic",
+          "Sprachniveau": "C1",
+          "Status": "✓",
+          "Kategorie": "SP-Sprachkurse",
+          "Kursort": 'Frankfurt am Main',
+          "Zeitraum": "am 01.06.24",
+          "Freie Plätze": 2,
+          "Preis": "149,00 €",
+          "Anmeldung bis": '15.06.2024'
+        },
+        {
+          "KursID": "PR-240601-KÖ-A1Z",
+          "Kurstitel": "Telc Arabic",
+          "Sprachniveau": "C1",
+          "Status": "✓",
+          "Kategorie": "SP-Sprachkurse",
+          "Kursort": 'Frankfurt am Main',
+          "Zeitraum": "am 01.06.24",
+          "Freie Plätze": 2,
+          "Preis": "149,00 €",
+          "Anmeldung bis": '15.06.2024'
+        },
       ];
       filteredCourses = List.from(courses); // Initially, show all courses
       isLoading = false;
@@ -149,7 +233,6 @@ class CourseAllState extends State<CourseAll> {
         ? const Center(child: CircularProgressIndicator())
         : LayoutBuilder(
             builder: (context, constraints) {
-              final double itemHeight = constraints.maxWidth / 2 * (2 / 3);
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
@@ -162,7 +245,7 @@ class CourseAllState extends State<CourseAll> {
                       onFilterChanged: onFilterChanged,
                     ),
                     SizedBox(
-                      height: itemHeight,
+                      height: 600,
                       child: Expanded(
                         child: CourseList(courses: filteredCourses),
                       ),

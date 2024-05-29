@@ -73,157 +73,125 @@ class CourseListState extends State<CourseList> {
 
   @override
   Widget build(BuildContext context) {
-    return IntrinsicHeight(
-      child: Column(
-        children: [
-          Expanded(
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                if (constraints.maxWidth > 1000) {
-                  // Render DataTable for larger screens
-                  return SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: DataTable(
-                      columnSpacing: 25.0,
-                      dataRowMinHeight: 45.0,
-                      columns: [
-                        DataColumn(label: buildTextColumn('KursID')),
-                        DataColumn(label: buildTextColumn('Kurstitel')),
-                        DataColumn(label: buildTextColumn('Sprachniveau')),
-                        DataColumn(label: buildTextColumn('Kategorie')),
-                        DataColumn(label: buildTextColumn('Kursort')),
-                        DataColumn(label: buildTextColumn('Status')),
-                        DataColumn(label: buildTextColumn('Freie Plätze')),
-                        DataColumn(label: buildTextColumn('Zeitraum')),
-                        DataColumn(label: buildTextColumn('Anmeldung bis')),
-                        DataColumn(label: buildTextColumn('Preis')),
-                        DataColumn(label: buildTextColumn('Details')),
-                      ],
-                      rows: paginatedCourses.map((course) {
-                        bool isDeadlinePassed = isApplicationDeadlinePassed(
-                            course['Anmeldung bis']);
-                        int freiePlaetze =
-                            int.tryParse(course['Freie Plätze'].toString()) ??
-                                0;
-                        bool shouldShowCloseIcon =
-                            isDeadlinePassed || freiePlaetze == 0;
+    bool isWideScreen = MediaQuery.of(context).size.width > 1220;
+    bool isWideScreen2 = MediaQuery.of(context).size.width > 1100;
+    bool isWideScreen3 = MediaQuery.of(context).size.width > 990;
+    bool isWideScreen4 = MediaQuery.of(context).size.width > 900;
+    bool isWideScreen5 = MediaQuery.of(context).size.width > 792;
+    bool isWideScreen6 = MediaQuery.of(context).size.width > 675;
+    bool isWideScreen7 = MediaQuery.of(context).size.width > 570;
 
-                        return DataRow(
-                          cells: [
-                            DataCell(buildDataCell(course['KursID'], 10)),
-                            DataCell(buildDataCell(course['Kurstitel'], 12)),
-                            DataCell(buildDataCell(course['Sprachniveau'], 5)),
-                            DataCell(buildDataCell(course['Kategorie'], 12)),
-                            DataCell(buildDataCell(course['Kursort'], 18)),
-                            DataCell(
-                              Icon(
-                                shouldShowCloseIcon ? Icons.close : Icons.check,
-                                color: shouldShowCloseIcon
-                                    ? Colors.red
-                                    : Colors.green,
-                              ),
-                            ),
-                            DataCell(Row(
-                              children: [
-                                getFreiePlaetzeIcon(freiePlaetze),
-                                const SizedBox(width: 5),
-                                buildDataCell(freiePlaetze.toString(), 5),
-                              ],
-                            )),
-                            DataCell(buildDataCell(course['Zeitraum'], 12)),
-                            DataCell(
-                                buildDataCell(course['Anmeldung bis'], 12)),
-                            DataCell(buildDataCell('${course['Preis']} ', 10)),
-                            DataCell(ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xFF003969),
-                              ),
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        CourseDetailsPage(course: course),
-                                  ),
-                                );
-                              },
-                              child: const Text(
-                                'Details',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            )),
-                          ],
-                        );
-                      }).toList(),
+    return Column(
+      children: [
+        Expanded(
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: DataTable(
+              columnSpacing: isWideScreen7 ? 25.0 : 5,
+              dataRowMinHeight: 45.0,
+              columns: [
+                if (isWideScreen) DataColumn(label: buildTextColumn('KursID')),
+                DataColumn(label: buildTextColumn('Kurstitel')),
+                DataColumn(label: buildTextColumn('Sprachniveau')),
+                if (isWideScreen2)
+                  DataColumn(label: buildTextColumn('Kategorie')),
+                DataColumn(label: buildTextColumn('Kursort')),
+                DataColumn(label: buildTextColumn('Status')),
+                if (isWideScreen5)
+                  DataColumn(label: buildTextColumn('Freie Plätze')),
+                if (isWideScreen4)
+                  DataColumn(label: buildTextColumn('Zeitraum')),
+                if (isWideScreen6)
+                  DataColumn(label: buildTextColumn('Anmeldung bis')),
+                if (isWideScreen3) DataColumn(label: buildTextColumn('Preis')),
+                DataColumn(label: buildTextColumn('Details')),
+              ],
+              rows: paginatedCourses.map((course) {
+                return DataRow(
+                  cells: [
+                    if (isWideScreen)
+                      DataCell(buildDataCell(course['KursID'], 10)),
+                    DataCell(buildDataCell(course['Kurstitel'], 12)),
+                    DataCell(buildDataCell(course['Sprachniveau'], 5)),
+                    if (isWideScreen2)
+                      DataCell(buildDataCell(course['Kategorie'], 12)),
+                    DataCell(buildDataCell(course['Kursort'], 18)),
+                    DataCell(
+                      Icon(
+                        (isApplicationDeadlinePassed(course['Anmeldung bis']) ||
+                                int.tryParse(
+                                        course['Freie Plätze'].toString()) ==
+                                    0)
+                            ? Icons.close
+                            : Icons.check,
+                        color: (isApplicationDeadlinePassed(
+                                    course['Anmeldung bis']) ||
+                                int.tryParse(
+                                        course['Freie Plätze'].toString()) ==
+                                    0)
+                            ? Colors.red
+                            : Colors.green,
+                      ),
                     ),
-                  );
-                } else {
-                  // Render Cards for smaller screens
-                  return ListView.builder(
-                    itemCount: paginatedCourses.length,
-                    itemBuilder: (context, index) {
-                      final course = paginatedCourses[index];
-                      return Card(
-                        margin: const EdgeInsets.all(8.0),
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('Kursnr. ${course['#']}',
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold)),
-                              const SizedBox(height: 8.0),
-                              Text(course['Kurstitel'] ?? '',
-                                  style: const TextStyle(
-                                      fontSize: 18.0, color: Colors.blue)),
-                              const SizedBox(height: 8.0),
-                              Text('Status: ${course['Status']}'),
-                              Text('Kategorie: ${course['Kategorie']}'),
-                              Text('Kursort: ${course['Kursort']}'),
-                              Text('Zeitraum: ${course['Zeitraum']}'),
-                              Text('Freie Plätze: ${course['Freie Plätze']}'),
-                              Text('Preis: ${course['Preis']}'),
-                              Text('Anmeldung bis: ${course['Anmeldung bis']}'),
-                              const SizedBox(height: 8.0),
-                              ElevatedButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          CourseDetailsPage(course: course),
-                                    ),
-                                  );
-                                },
-                                child: const Text('Details'),
-                              ),
-                            ],
+                    if (isWideScreen5)
+                      DataCell(Row(
+                        children: [
+                          getFreiePlaetzeIcon(
+                              int.tryParse(course['Freie Plätze'].toString()) ??
+                                  0),
+                          const SizedBox(width: 5),
+                          buildDataCell(course['Freie Plätze'].toString(), 5),
+                        ],
+                      )),
+                    if (isWideScreen4)
+                      DataCell(buildDataCell(course['Zeitraum'], 12)),
+                    if (isWideScreen6)
+                      DataCell(buildDataCell(course['Anmeldung bis'], 12)),
+                    if (isWideScreen3)
+                      DataCell(buildDataCell('${course['Preis']} ', 10)),
+                    DataCell(ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF003969),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                CourseDetailsPage(course: course),
                           ),
-                        ),
-                      );
-                    },
-                  );
-                }
-              },
+                        );
+                      },
+                      child: const Text(
+                        'Details',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    )),
+                  ],
+                );
+              }).toList(),
             ),
           ),
+        ),
+        if (widget.courses.length > itemsPerPage)
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ElevatedButton(
+              IconButton(
                 onPressed: previousPage,
-                child: const Text('Önceki'),
+                icon: const Icon(Icons.arrow_back),
               ),
-              Text('Sayfa ${currentPage + 1}'),
-              ElevatedButton(
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Text('Sayfa ${currentPage + 1}'),
+              ),
+              IconButton(
                 onPressed: nextPage,
-                child: const Text('Sonraki'),
+                icon: const Icon(Icons.arrow_forward),
               ),
             ],
           ),
-        ],
-      ),
+      ],
     );
   }
 
@@ -232,9 +200,10 @@ class CourseListState extends State<CourseList> {
       child: Text(
         text,
         style: const TextStyle(
-            fontSize: 14.0,
-            color: Color(0xFF003969),
-            fontWeight: FontWeight.bold),
+          fontSize: 14.0,
+          color: Color(0xFF003969),
+          fontWeight: FontWeight.bold,
+        ),
       ),
     );
   }
