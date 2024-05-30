@@ -15,8 +15,8 @@ class CourseList extends StatefulWidget {
 }
 
 class CourseListState extends State<CourseList> {
-  int currentPage = 0;
   static const int itemsPerPage = 10;
+  int currentPage = 0;
   final DateFormat dateFormat = DateFormat('dd.MM.yyyy');
 
   List<Map<String, dynamic>> get paginatedCourses {

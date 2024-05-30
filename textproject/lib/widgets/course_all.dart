@@ -217,8 +217,10 @@ class CourseAllState extends State<CourseAll> {
 
   void onFilterChanged(Map<String, String?> filter) {
     setState(() {
+      filteredCourses = [];
       filteredCourses = List.from(courses);
-      filteredCourses = courses.where((course) {
+
+      filteredCourses = filteredCourses.where((course) {
         final kurstitleMatch = filter['Kurstitel'] == null ||
             filter['Kurstitel']!.isEmpty ||
             course['Kurstitel'].contains(filter['Kurstitel']!);
@@ -259,7 +261,9 @@ class CourseAllState extends State<CourseAll> {
                     ),
                     SizedBox(
                       height: 600,
-                      child: CourseList(courses: filteredCourses),
+                      child: CourseList(
+                        courses: filteredCourses,
+                      ),
                     ),
                   ],
                 ),

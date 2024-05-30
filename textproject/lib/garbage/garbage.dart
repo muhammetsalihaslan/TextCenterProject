@@ -113,112 +113,20 @@
 //           "Preis": "149,00 €",
 //           "Anmeldung bis": '15.06.2024'
 //         },
-//         {
-//           "KursID": "PR-240601-KÖ-A1Z",
-//           "Kurstitel": "Telc Arabic",
-//           "Sprachniveau": "C1",
-//           "Status": "✓",
-//           "Kategorie": "SP-Sprachkurse",
-//           "Kursort": 'Frankfurt am Main',
-//           "Zeitraum": "am 01.06.24",
-//           "Freie Plätze": 2,
-//           "Preis": "149,00 €",
-//           "Anmeldung bis": '15.06.2024'
-//         },
-//         {
-//           "KursID": "PR-240601-KÖ-A1Z",
-//           "Kurstitel": "Telc Arabic",
-//           "Sprachniveau": "C1",
-//           "Status": "✓",
-//           "Kategorie": "SP-Sprachkurse",
-//           "Kursort": 'Frankfurt am Main',
-//           "Zeitraum": "am 01.06.24",
-//           "Freie Plätze": 2,
-//           "Preis": "149,00 €",
-//           "Anmeldung bis": '15.06.2024'
-//         },
-//         {
-//           "KursID": "PR-240601-KÖ-A1Z",
-//           "Kurstitel": "Telc Arabic",
-//           "Sprachniveau": "C1",
-//           "Status": "✓",
-//           "Kategorie": "SP-Sprachkurse",
-//           "Kursort": 'Frankfurt am Main',
-//           "Zeitraum": "am 01.06.24",
-//           "Freie Plätze": 2,
-//           "Preis": "149,00 €",
-//           "Anmeldung bis": '15.06.2024'
-//         },
-//         {
-//           "KursID": "PR-240601-KÖ-A1Z",
-//           "Kurstitel": "Telc Arabic",
-//           "Sprachniveau": "C1",
-//           "Status": "✓",
-//           "Kategorie": "SP-Sprachkurse",
-//           "Kursort": 'Frankfurt am Main',
-//           "Zeitraum": "am 01.06.24",
-//           "Freie Plätze": 2,
-//           "Preis": "149,00 €",
-//           "Anmeldung bis": '15.06.2024'
-//         },
-//         {
-//           "KursID": "PR-240601-KÖ-A1Z",
-//           "Kurstitel": "Telc Arabic",
-//           "Sprachniveau": "C1",
-//           "Status": "✓",
-//           "Kategorie": "SP-Sprachkurse",
-//           "Kursort": 'Frankfurt am Main',
-//           "Zeitraum": "am 01.06.24",
-//           "Freie Plätze": 2,
-//           "Preis": "149,00 €",
-//           "Anmeldung bis": '15.06.2024'
-//         },
-//         {
-//           "KursID": "PR-240601-KÖ-A1Z",
-//           "Kurstitel": "Telc Arabic",
-//           "Sprachniveau": "C1",
-//           "Status": "✓",
-//           "Kategorie": "SP-Sprachkurse",
-//           "Kursort": 'Frankfurt am Main',
-//           "Zeitraum": "am 01.06.24",
-//           "Freie Plätze": 2,
-//           "Preis": "149,00 €",
-//           "Anmeldung bis": '15.06.2024'
-//         },
-//         {
-//           "KursID": "PR-240601-KÖ-A1Z",
-//           "Kurstitel": "Telc Arabic",
-//           "Sprachniveau": "C1",
-//           "Status": "✓",
-//           "Kategorie": "SP-Sprachkurse",
-//           "Kursort": 'Frankfurt am Main',
-//           "Zeitraum": "am 01.06.24",
-//           "Freie Plätze": 2,
-//           "Preis": "149,00 €",
-//           "Anmeldung bis": '15.06.2024'
-//         },
-//         {
-//           "KursID": "PR-240601-KÖ-A1Z",
-//           "Kurstitel": "Telc Arabic",
-//           "Sprachniveau": "C1",
-//           "Status": "✓",
-//           "Kategorie": "SP-Sprachkurse",
-//           "Kursort": 'Frankfurt am Main',
-//           "Zeitraum": "am 01.06.24",
-//           "Freie Plätze": 2,
-//           "Preis": "149,00 €",
-//           "Anmeldung bis": '15.06.2024'
-//         },
+//         // Diğer kurslar...
 //       ];
 //       filteredCourses = List.from(courses); // Initially, show all courses
 //       isLoading = false;
 //     });
 //   }
 
-//   void onFilterChanged(Map<String, String?> filter) {
+//   void onFilterChanged(Map<String, String?> filter, Function resetPage) {
 //     setState(() {
+//       // Önce tüm verileri getirelim
 //       filteredCourses = List.from(courses);
-//       filteredCourses = courses.where((course) {
+
+//       // Ardından yeni filtrelere göre yeniden filtreleyelim
+//       filteredCourses = filteredCourses.where((course) {
 //         final kurstitleMatch = filter['Kurstitel'] == null ||
 //             filter['Kurstitel']!.isEmpty ||
 //             course['Kurstitel'].contains(filter['Kurstitel']!);
@@ -237,6 +145,9 @@
 //             kategorieMatch &&
 //             sprachniveauMatch;
 //       }).toList();
+
+//       // Sayfayı ilk sayfaya ayarla
+//       resetPage();
 //     });
 //   }
 
@@ -255,11 +166,18 @@
 //                       kursorts: kursorts,
 //                       kategorien: kategorien,
 //                       sprachniveaus: sprachniveaus,
-//                       onFilterChanged: onFilterChanged,
+//                       onFilterChanged: (filter) => onFilterChanged(filter, () {
+//                         // CourseList widget'ındaki sayfayı sıfırla
+//                         setState(() {
+//                           // Boş bir setState kullanarak sadece CourseList widget'ını yenile
+//                         });
+//                       }),
 //                     ),
 //                     SizedBox(
 //                       height: 600,
-//                       child: CourseList(courses: filteredCourses),
+//                       child: CourseList(
+//                         courses: filteredCourses,
+//                       ),
 //                     ),
 //                   ],
 //                 ),
