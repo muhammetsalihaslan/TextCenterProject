@@ -17,7 +17,6 @@ class CourseAllState extends State<CourseAll> {
   List<String> kategorien = [];
   List<String> sprachniveaus = [];
   bool isLoading = true;
-  int currentPage = 0;
 
   @override
   void initState() {
@@ -198,6 +197,18 @@ class CourseAllState extends State<CourseAll> {
           "Preis": "149,00 €",
           "Anmeldung bis": '15.06.2024'
         },
+        {
+          "KursID": "PR-240601-KÖ-A1Z",
+          "Kurstitel": "Telc Arabic",
+          "Sprachniveau": "C1",
+          "Status": "✓",
+          "Kategorie": "SP-Sprachkurse",
+          "Kursort": 'Frankfurt am Main',
+          "Zeitraum": "am 01.06.24",
+          "Freie Plätze": 2,
+          "Preis": "149,00 €",
+          "Anmeldung bis": '15.06.2024'
+        },
       ];
       filteredCourses = List.from(courses); // Initially, show all courses
       isLoading = false;
@@ -206,6 +217,7 @@ class CourseAllState extends State<CourseAll> {
 
   void onFilterChanged(Map<String, String?> filter) {
     setState(() {
+      filteredCourses = List.from(courses);
       filteredCourses = courses.where((course) {
         final kurstitleMatch = filter['Kurstitel'] == null ||
             filter['Kurstitel']!.isEmpty ||
@@ -225,13 +237,6 @@ class CourseAllState extends State<CourseAll> {
             kategorieMatch &&
             sprachniveauMatch;
       }).toList();
-      currentPage = 0;
-    });
-  }
-
-  void onPageChanged(int page) {
-    setState(() {
-      currentPage = page;
     });
   }
 
@@ -254,10 +259,7 @@ class CourseAllState extends State<CourseAll> {
                     ),
                     SizedBox(
                       height: 600,
-                      child: CourseList(
-                        courses: filteredCourses,
-                        onPageChanged: onPageChanged,
-                      ),
+                      child: CourseList(courses: filteredCourses),
                     ),
                   ],
                 ),

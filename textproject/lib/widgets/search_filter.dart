@@ -173,7 +173,7 @@ class _SearchFilterState extends State<SearchFilter> {
       },
       dropdownColor: Colors.white,
       iconEnabledColor: const Color(0xFF343E48),
-      isExpanded: true,
+      isExpanded: false,
     );
   }
 }
