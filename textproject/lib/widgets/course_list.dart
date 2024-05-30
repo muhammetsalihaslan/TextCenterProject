@@ -4,10 +4,12 @@ import 'package:textproject/pages/course_detail_page.dart';
 
 class CourseList extends StatefulWidget {
   final List<Map<String, dynamic>> courses;
+  final Function(int) onPageChanged;
 
   const CourseList({
     required this.courses,
     super.key,
+    required this.onPageChanged,
   });
 
   @override
@@ -30,6 +32,7 @@ class CourseListState extends State<CourseList> {
     setState(() {
       if ((currentPage + 1) * itemsPerPage < widget.courses.length) {
         currentPage++;
+        widget.onPageChanged(currentPage);
       }
     });
   }
@@ -38,6 +41,7 @@ class CourseListState extends State<CourseList> {
     setState(() {
       if (currentPage > 0) {
         currentPage--;
+        widget.onPageChanged(currentPage);
       }
     });
   }

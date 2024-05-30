@@ -17,6 +17,7 @@ class CourseAllState extends State<CourseAll> {
   List<String> kategorien = [];
   List<String> sprachniveaus = [];
   bool isLoading = true;
+  int currentPage = 0;
 
   @override
   void initState() {
@@ -224,6 +225,13 @@ class CourseAllState extends State<CourseAll> {
             kategorieMatch &&
             sprachniveauMatch;
       }).toList();
+      currentPage = 0;
+    });
+  }
+
+  void onPageChanged(int page) {
+    setState(() {
+      currentPage = page;
     });
   }
 
@@ -246,8 +254,9 @@ class CourseAllState extends State<CourseAll> {
                     ),
                     SizedBox(
                       height: 600,
-                      child: Expanded(
-                        child: CourseList(courses: filteredCourses),
+                      child: CourseList(
+                        courses: filteredCourses,
+                        onPageChanged: onPageChanged,
                       ),
                     ),
                   ],
