@@ -67,7 +67,8 @@ class CourseAllState extends State<CourseAll> {
       courses = [
         {
           "KursID": "PR-240526-KS-C1A",
-          "Kurstitel": "Telc Deutsch for immigrant first step",
+          "Kurstitel":
+              "Telc Deutsch for immigrant first step ahagahgahaghagahghagshjshsgsjsgsjsggsjsgsaaggsahhsgahsagsahsgashagsahsgashasgashgashasgahgsahsgahsgahsgashagh",
           "Sprachniveau": "A1",
           "Status": "✓",
           "Kategorie": "PR-Prüfungen",

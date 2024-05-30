@@ -161,8 +161,10 @@ class CourseListState extends State<CourseList> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) =>
-                                CourseDetailsPage(course: course),
+                            builder: (context) => CourseDetailsPage(
+                              course: course,
+                              onBack: () {},
+                            ),
                           ),
                         );
                       },
