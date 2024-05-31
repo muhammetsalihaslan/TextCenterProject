@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:textproject/pages/meine_buchung_page.dart';
 
 class CourseDetailCard extends StatefulWidget {
   final Map<String, dynamic> course;
@@ -99,7 +100,17 @@ class _CourseDetailCardState extends State<CourseDetailCard> {
                       horizontal: 50, vertical: 15), // Button size
                 ),
                 onPressed: () {
-                  // Button action
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MeineBuchung(
+                        course: widget.course,
+                        onBack: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ),
+                  );
                 },
                 child: const Text('Jetzt buchen',
                     style: TextStyle(color: Colors.white)),

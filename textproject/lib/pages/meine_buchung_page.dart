@@ -1,42 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:textproject/widgets/adrees_form.dart';
-import 'package:textproject/widgets/altern_rech.dart';
-import 'package:textproject/widgets/kontakt_daten.dart';
-import 'package:textproject/widgets/meine_buchung.dart';
+import 'package:textproject/widgets/course_short_details.dart';
+import 'package:textproject/widgets/custom_appbar.dart';
+import 'package:textproject/widgets/custom_drawer.dart';
+import 'package:textproject/widgets/custom_footer.dart';
 
-class MeineBuchungPage extends StatefulWidget {
-  final Map<String, dynamic> bookingDetails;
+class MeineBuchung extends StatelessWidget {
+  final Map<String, dynamic> course;
+  final VoidCallback onBack;
 
-  const MeineBuchungPage({required this.bookingDetails, super.key});
+  const MeineBuchung({super.key, required this.course, required this.onBack});
 
-  @override
-  State<MeineBuchungPage> createState() => _MeineBuchungPageState();
-}
-
-class _MeineBuchungPageState extends State<MeineBuchungPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Mein Buchung'),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            BucHung(bookingDetails: widget.bookingDetails),
-            const Row(
-              children: [
-                KontaktDaten(),
-                Column(
-                  children: [
-                    AdressForm(),
-                    AlternRech(),
-                    AlternRech(),
-                  ],
-                )
-              ],
-            )
-          ],
+      appBar: const CustomAppBar(),
+      endDrawer: MediaQuery.of(context).size.width <= 670
+          ? const CustomDrawer()
+          : null,
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CourseShortDetailCard(course: course),
+              const SizedBox(height: 16),
+              const CustomFooter(),
+            ],
+          ),
         ),
       ),
     );
