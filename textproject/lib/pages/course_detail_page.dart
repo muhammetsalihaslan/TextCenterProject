@@ -29,10 +29,12 @@ class CourseDetailsPage extends StatelessWidget {
               Row(
                 children: [
                   Expanded(
+                    flex: 3,
                     child: CourseDetailCard(course: course),
                   ),
                   const SizedBox(width: 16),
                   const Expanded(
+                    flex: 2,
                     child: CourseTimesAndLocation(),
                   ),
                 ],
