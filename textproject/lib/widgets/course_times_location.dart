@@ -95,13 +95,18 @@ class CourseTimesAndLocation extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: Colors.blue.shade100,
                       borderRadius: BorderRadius.circular(8),
+                      image: const DecorationImage(
+                        image: AssetImage('assets/bodyimg/map_background.webp'),
+                        fit: BoxFit.cover,
+                      ),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Veranstaltungsort',
+                        const Text('Veranstaltungsort',
                             style: TextStyle(
-                                fontSize: 18, color: Colors.blue.shade900)),
+                                fontSize: 18,
+                                color: Color.fromARGB(255, 251, 251, 251))),
                         const SizedBox(height: 8),
                         Text(location['name'],
                             style: TextStyle(color: Colors.blue.shade900)),
