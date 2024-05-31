@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -12,6 +13,18 @@ class CourseDetailCard extends StatefulWidget {
 
 class _CourseDetailCardState extends State<CourseDetailCard> {
   final DateFormat dateFormat2 = DateFormat('dd.MM.yyyy');
+  bool _showWarningText = true;
+
+  @override
+  void initState() {
+    super.initState();
+    // Timer to toggle the visibility of the warning text every 500ms
+    Timer.periodic(const Duration(milliseconds: 500), (timer) {
+      setState(() {
+        _showWarningText = !_showWarningText;
+      });
+    });
+  }
 
   bool isApplicationDeadlinePassed(String appDeadline) {
     try {
@@ -134,12 +147,25 @@ class _CourseDetailCardState extends State<CourseDetailCard> {
           Expanded(
             flex: 3,
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 freiePlaetzeIcon,
                 const SizedBox(width: 8), // İkon ile sayı arasında boşluk
                 Text(freiePlaetzeInt.toString(),
                     style: const TextStyle(color: Colors.white)),
+                if (freiePlaetzeInt < 3 &&
+                    freiePlaetzeInt > 0 &&
+                    _showWarningText)
+                  const Padding(
+                    padding: EdgeInsets.only(left: 8),
+                    child: Text('(Dieser Kurs ist fast voll)',
+                        style: TextStyle(color: Colors.yellow)),
+                  ),
+                if (freiePlaetzeInt == 0)
+                  const Padding(
+                    padding: EdgeInsets.only(left: 8),
+                    child: Text('(Dieser Kurs ist voll)',
+                        style: TextStyle(color: Colors.red)),
+                  ),
               ],
             ),
           ),
