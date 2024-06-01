@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class KontaktDaten extends StatefulWidget {
+class AdresseForm extends StatefulWidget {
   final Map<String, String> formData;
 
-  const KontaktDaten({super.key, required this.formData});
+  const AdresseForm({super.key, required this.formData});
 
   @override
-  KontaktDatenState createState() => KontaktDatenState();
+  AdresseFormState createState() => AdresseFormState();
 }
 
-class KontaktDatenState extends State<KontaktDaten> {
+class AdresseFormState extends State<AdresseForm> {
   final _formKey = GlobalKey<FormState>();
 
   void saveForm() {
@@ -32,80 +32,61 @@ class KontaktDatenState extends State<KontaktDaten> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              'Kontaktdaten',
+              'Adresse',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16),
-            DropdownButtonFormField<String>(
-              decoration: const InputDecoration(labelText: 'Anrede *'),
-              items: ['Mr', 'Ms', 'Mrs']
-                  .map((label) => DropdownMenuItem(
-                        value: label,
-                        child: Text(label),
-                      ))
-                  .toList(),
-              onChanged: (value) {},
+            TextFormField(
+              decoration: const InputDecoration(labelText: 'c/o'),
               onSaved: (value) {
-                widget.formData['anrede'] = value!;
+                widget.formData['co'] = value!;
+              },
+            ),
+            TextFormField(
+              decoration: const InputDecoration(labelText: 'Straße *'),
+              onSaved: (value) {
+                widget.formData['strasse'] = value!;
               },
               validator: (value) {
-                if (value == null) {
-                  return 'Please select an option';
+                if (value == null || value.isEmpty) {
+                  return 'Please enter your street';
                 }
                 return null;
               },
             ),
             TextFormField(
-              decoration:
-                  const InputDecoration(labelText: 'Akademischer Titel'),
+              decoration: const InputDecoration(labelText: 'PLZ *'),
               onSaved: (value) {
-                widget.formData['akademischer_titel'] = value!;
-              },
-            ),
-            TextFormField(
-              decoration: const InputDecoration(labelText: 'Vorname *'),
-              onSaved: (value) {
-                widget.formData['vorname'] = value!;
+                widget.formData['plz'] = value!;
               },
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter your first name';
+                  return 'Please enter your postal code';
                 }
                 return null;
               },
             ),
             TextFormField(
-              decoration: const InputDecoration(labelText: 'Nachname *'),
+              decoration: const InputDecoration(labelText: 'Ort *'),
               onSaved: (value) {
-                widget.formData['nachname'] = value!;
+                widget.formData['ort'] = value!;
               },
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter your last name';
+                  return 'Please enter your city';
                 }
                 return null;
               },
             ),
             TextFormField(
-              decoration: const InputDecoration(labelText: 'Geburtsdatum *'),
+              decoration: const InputDecoration(labelText: 'Land *'),
+              initialValue: 'Deutschland',
               onSaved: (value) {
-                widget.formData['geburtsdatum'] = value!;
+                widget.formData['land'] = value!;
               },
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter your birth date';
-                }
-                return null;
-              },
-            ),
-            TextFormField(
-              decoration: const InputDecoration(labelText: 'Geburtsort *'),
-              onSaved: (value) {
-                widget.formData['geburtsort'] = value!;
-              },
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter your birth place';
+                  return 'Please enter your country';
                 }
                 return null;
               },
